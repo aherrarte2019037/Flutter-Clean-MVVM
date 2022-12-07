@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ApplicationApp extends StatefulWidget {
-  const ApplicationApp._internal();
+  const ApplicationApp._(); // Private constructor
 
-  static const ApplicationApp instance = ApplicationApp._internal(); // Singleton pattern
+  static const ApplicationApp instance = ApplicationApp._(); // Singleton pattern
 
   factory ApplicationApp() => instance; // Factory for singleton instance
 
