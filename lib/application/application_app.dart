@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 
 class ApplicationApp extends StatefulWidget {
-  const ApplicationApp({super.key});
-  
+  const ApplicationApp._internal();
+
+  static const ApplicationApp instance = ApplicationApp._internal(); // Singleton pattern
+
+  factory ApplicationApp() => instance; // Factory for singleton instance
+
   @override
   State<ApplicationApp> createState() => _ApplicationAppState();
 }
