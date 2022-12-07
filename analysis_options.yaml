@@ -1,29 +1,136 @@
-# This file configures the analyzer, which statically analyzes Dart code to
-# check for errors, warnings, and lints.
-#
-# The issues identified by the analyzer are surfaced in the UI of Dart-enabled
-# IDEs (https://dart.dev/tools#ides-and-editors). The analyzer can also be
-# invoked from the command line by running `flutter analyze`.
-
-# The following line activates a set of recommended lints for Flutter apps,
-# packages, and plugins designed to encourage good coding practices.
 include: package:flutter_lints/flutter.yaml
 
-linter:
-  # The lint rules applied to this project can be customized in the
-  # section below to disable rules from the `package:flutter_lints/flutter.yaml`
-  # included above or to enable additional rules. A list of all available lints
-  # and their documentation is published at
-  # https://dart-lang.github.io/linter/lints/index.html.
-  #
-  # Instead of disabling a lint rule for the entire project in the
-  # section below, it can also be suppressed for a single line of code
-  # or a specific dart file by using the `// ignore: name_of_lint` and
-  # `// ignore_for_file: name_of_lint` syntax on the line or in the file
-  # producing the lint.
-  rules:
-    # avoid_print: false  # Uncomment to disable the `avoid_print` rule
-    # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
+analyzer:
+  plugins:
+    - dart_code_metrics
+  
+  exclude:
+    - '.fvm/**'
+    - "lib/**/*.g.dart"
+    - "lib/**/*.freezed.dart"
+    - "lib/**/*.gql.dart"
+    - "lib/generated/**/*.dart"
+    - "lib/generated/*.dart"
+    - "build/**"
+    - "lib/**.gr.dart"
+    - "lib/**.config.dart"
+    - "lib/firebase_options.dart"
+    - "tools/**"
+    - "packages/**"
+    - "test/coverage_helper_test.dart"
+  
+  language:
+    strict-raw-types: true
 
-# Additional information about this file can be found at
-# https://dart.dev/guides/language/analysis-options
+  strong-mode:
+    implicit-dynamic: true
+  
+  errors:
+    invalid_annotation_target: error
+    argument_type_not_assignable: error
+    field_initializer_not_assignable: error
+    map_value_type_not_assignable: error
+    invalid_assignment: error
+    return_of_invalid_type_from_closure: error
+    return_of_invalid_type: error
+    unnecessary_new: warning
+    sort_pub_dependencies: ignore
+    avoid_setters_without_getters: ignore
+    import_of_legacy_library_into_null_safe: error
+    avoid_single_cascade_in_expression_statements: ignore
+    null_aware_in_logical_operator: error
+    missing_required_param: error
+    implicit_dynamic_map_literal: ignore
+    prefer_single_quotes: ignore
+    missing_return: error
+    always_declare_return_types: error
+    override_on_non_overriding_member: error
+    annotate_overrides: error
+    avoid_relative_lib_imports: error
+    avoid_empty_else: error
+    avoid_returning_null_for_future: error
+    empty_statements: error
+    always_put_control_body_on_new_line: error
+    always_require_non_null_named_parameters: error
+    avoid_renaming_method_parameters: error
+    avoid_void_async: error
+    parameter_assignments: error
+    constant_identifier_names: error
+    unawaited_futures: error
+    non_constant_identifier_names: warning
+    only_throw_errors: error
+    exhaustive_cases: error
+    always_use_package_imports: error
+    missing_enum_constant_in_switch: error
+    prefer_const_constructors: error
+    depend_on_referenced_packages: ignore
+    use_setters_to_change_properties: ignore
+    avoid_classes_with_only_static_members: ignore
+    avoid_positional_boolean_parameters: error
+    avoid_dynamic_calls: error
+    require_trailing_commas: error
+
+linter:
+  rules:
+
+dart_code_metrics:
+  anti-patterns:
+    - long-method
+    - long-parameter-list
+  
+  metrics:
+    maximum-nesting-level: 3
+    number-of-parameters: 4
+    source-lines-of-code: 30
+  
+  metrics-exclude:
+    - "test/**"
+    - "widgetbook/**"
+    - "**/*.gen.dart"
+
+  rules-exclude:
+    - ".fvm/**"
+    - "ios/**"
+    - "android/**"
+    - "test/**"
+    - "widgetbook/**"
+    - "**/*.gen.dart"
+    - "tools/**"
+    - "packages/**"
+  
+  rules:
+    - no-boolean-literal-compare
+    - no-empty-block
+    - prefer-trailing-comma:
+        break-on: 2
+    - prefer-conditional-expressions
+    - no-equal-then-else
+    - avoid-unnecessary-type-casts
+    - avoid-unnecessary-type-assertions
+    - no-magic-number
+    - prefer-first
+    - prefer-last
+    - prefer-match-file-name
+    - avoid-use-expanded-as-spacer
+    - prefer-extracting-callbacks
+    - prefer-async-await
+    - prefer-moving-to-variable
+    - avoid-returning-widgets
+    - prefer-correct-identifier-length:
+        exceptions: [ 'i' ]
+        max-identifier-length: 40
+        min-identifier-length: 2
+    - prefer-correct-type-name:
+        min-length: 2
+        max-length: 40
+    - prefer-single-widget-per-file:
+        ignore-private-widgets: true
+    - member-ordering:
+        order:
+          - constructors
+          - public-fields
+          - private-fields
+          - public-getters
+          - private-getters
+          - public-methods
+          - private-methods
