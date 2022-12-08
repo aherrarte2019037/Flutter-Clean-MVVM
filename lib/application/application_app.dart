@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 class ApplicationApp extends StatefulWidget {
   const ApplicationApp._(); // Private constructor
 
-  static const ApplicationApp instance = ApplicationApp._(); // Singleton pattern
+  static const ApplicationApp _instance = ApplicationApp._(); // Singleton pattern
 
-  factory ApplicationApp() => instance; // Factory for singleton instance
+  factory ApplicationApp() => _instance; // Factory for singleton instance
 
   @override
   State<ApplicationApp> createState() => _ApplicationAppState();
