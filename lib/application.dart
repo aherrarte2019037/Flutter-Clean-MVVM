@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_clean_mvvm/localization/strings_manager.dart';
 import 'package:flutter_clean_mvvm/navigation/app_router.dart';
 import 'package:flutter_clean_mvvm/ui/theme/app_theme_data.dart';
 
@@ -20,7 +21,7 @@ class _ApplicationState extends State<Application> {
       routeInformationParser: AppRouter.router.routeInformationParser,
       routerDelegate: AppRouter.router.routerDelegate,
       theme: AppThemeData.lightTheme,
-      title: 'Flutter Clean',
+      title: StringsManager.appTitle,
     );
   }
 }
