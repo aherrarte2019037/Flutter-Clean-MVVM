@@ -102,7 +102,7 @@ dart_code_metrics:
     - no-boolean-literal-compare
     - no-empty-block
     - prefer-trailing-comma:
-        break-on: 2
+        break-on: 3
     - prefer-conditional-expressions
     - no-equal-then-else
     - avoid-unnecessary-type-casts

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_clean_mvvm/application/application_app.dart';
+import 'package:flutter_clean_mvvm/application.dart';
 
 void main() {
-  runApp(ApplicationApp());
+  runApp(Application());
 }
