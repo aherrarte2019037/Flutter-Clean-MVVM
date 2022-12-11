@@ -5,12 +5,21 @@
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
-// ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal
+// ignore_for_file: directives_ordering,unnecessary_import
 
 import 'package:flutter/widgets.dart';
 
+class $AssetsImagesGen {
+  const $AssetsImagesGen();
+
+  /// File path: assets/images/splash_logo.webp
+  AssetGenImage get splashLogo => const AssetGenImage('assets/images/splash_logo.webp');
+}
+
 class Assets {
   Assets._();
+
+  static const $AssetsImagesGen images = $AssetsImagesGen();
 }
 
 class AssetGenImage {
@@ -70,8 +79,6 @@ class AssetGenImage {
       cacheHeight: cacheHeight,
     );
   }
-
-  ImageProvider provider() => AssetImage(_assetName);
 
   String get path => _assetName;
 
