@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_clean_mvvm/presentation/splash/splash_page.dart';
 import 'package:go_router/go_router.dart';
 
-class AppRouter {
-  const AppRouter._();
+class Navigation {
+  const Navigation._();
 
   static final router = GoRouter(
     debugLogDiagnostics: true,
@@ -11,16 +12,13 @@ class AppRouter {
     ),
     routes: [
       GoRoute(
-        path: '/',
-        name: 'home',
-        builder: (context, state) => const _RouteWrapper(
-          child: Text('/ - /home'),
-        ),
+        path: '/splash',
+        builder: (context, state) => const SplashPage(),
       ),
       GoRoute(
-        path: '/splash',
+        path: '/home',
         builder: (context, state) => const _RouteWrapper(
-          child: Text('/splash'),
+          child: Text('/ - /home'),
         ),
       ),
       GoRoute(
