@@ -21,6 +21,7 @@ class _ApplicationState extends State<Application> {
       routeInformationParser: Navigation.router.routeInformationParser,
       routerDelegate: Navigation.router.routerDelegate,
       routeInformationProvider: Navigation.router.routeInformationProvider,
+      debugShowCheckedModeBanner: false,
       theme: AppThemeData.lightTheme,
       title: StringsManager.appTitle,
     );
