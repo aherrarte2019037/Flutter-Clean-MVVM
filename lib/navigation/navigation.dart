@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_clean_mvvm/navigation/routes.dart';
-import 'package:flutter_clean_mvvm/presentation/onboarding/onboarding_page.dart';
 import 'package:go_router/go_router.dart';
+import 'package:tutapp/navigation/routes.dart';
+import 'package:tutapp/presentation/onboarding/onboarding_page.dart';
 
 class Navigation {
   const Navigation._();

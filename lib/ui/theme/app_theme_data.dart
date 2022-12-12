@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_clean_mvvm/resources/fonts.gen.dart';
+import 'package:tutapp/resources/fonts.gen.dart';
 
 class AppThemeData {
   AppThemeData._();

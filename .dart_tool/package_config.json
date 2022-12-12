@@ -350,13 +350,13 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "flutter_clean_mvvm",
+      "name": "tutapp",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2022-12-12T19:02:33.574391Z",
+  "generated": "2022-12-12T21:00:14.286321Z",
   "generator": "pub",
   "generatorVersion": "2.18.4"
 }

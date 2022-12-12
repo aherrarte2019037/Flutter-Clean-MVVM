@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_clean_mvvm/localization/strings_manager.dart';
-import 'package:flutter_clean_mvvm/navigation/navigation.dart';
-import 'package:flutter_clean_mvvm/ui/theme/app_theme_data.dart';
+import 'package:tutapp/localization/strings_manager.dart';
+import 'package:tutapp/navigation/navigation.dart';
+
+import 'ui/theme/app_theme_data.dart';
 
 class Application extends StatefulWidget {
   const Application._(); // Private constructor
