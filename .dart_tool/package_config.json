@@ -56,6 +56,18 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "checked_yaml",
+      "rootUri": "file:///Users/angelherrarte/development/flutter/.pub-cache/hosted/pub.dartlang.org/checked_yaml-2.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "cli_util",
+      "rootUri": "file:///Users/angelherrarte/development/flutter/.pub-cache/hosted/pub.dartlang.org/cli_util-0.3.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "clock",
       "rootUri": "file:///Users/angelherrarte/development/flutter/.pub-cache/hosted/pub.dartlang.org/clock-1.1.1",
       "packageUri": "lib/",
@@ -120,6 +132,12 @@
       "rootUri": "file:///Users/angelherrarte/development/flutter/packages/flutter",
       "packageUri": "lib/",
       "languageVersion": "2.17"
+    },
+    {
+      "name": "flutter_launcher_icons",
+      "rootUri": "file:///Users/angelherrarte/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_launcher_icons-0.11.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "flutter_lints",
@@ -356,7 +374,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2022-12-12T21:00:14.286321Z",
+  "generated": "2022-12-12T21:35:45.338170Z",
   "generator": "pub",
   "generatorVersion": "2.18.4"
 }
