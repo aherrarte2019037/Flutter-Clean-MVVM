@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_mvvm/navigation/routes.dart';
+import 'package:flutter_clean_mvvm/presentation/onboarding/onboarding_page.dart';
 import 'package:go_router/go_router.dart';
 
 class Navigation {
@@ -10,7 +11,7 @@ class Navigation {
     errorBuilder: (context, state) => const _RouteWrapper(
       child: Text('Route not found'),
     ),
-    initialLocation: Routes.home.path,
+    initialLocation: Routes.onboarding.path,
     routes: [
       GoRoute(
         path: Routes.home.path,
@@ -36,9 +37,7 @@ class Navigation {
       GoRoute(
         path: Routes.onboarding.path,
         name: Routes.onboarding.name,
-        builder: (context, state) => const _RouteWrapper(
-          child: Text('/onboarding'),
-        ),
+        builder: (context, state) => const OnboardingPage(),
       ),
       GoRoute(
         path: Routes.forgotPassword.path,
