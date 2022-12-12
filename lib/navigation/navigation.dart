@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_mvvm/navigation/routes.dart';
-import 'package:flutter_clean_mvvm/presentation/splash/splash_page.dart';
 import 'package:go_router/go_router.dart';
 
 class Navigation {
@@ -11,13 +10,8 @@ class Navigation {
     errorBuilder: (context, state) => const _RouteWrapper(
       child: Text('Route not found'),
     ),
-    initialLocation: Routes.splash.path,
+    initialLocation: Routes.home.path,
     routes: [
-      GoRoute(
-        path: Routes.splash.path,
-        name: Routes.splash.name,
-        builder: (context, state) => const SplashPage(),
-      ),
       GoRoute(
         path: Routes.home.path,
         name: Routes.home.path,
