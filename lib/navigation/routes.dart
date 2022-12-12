@@ -1,5 +1,5 @@
 enum Routes {
-  splash(path: '/', name: 'splash'),
+  splash(path: '/splash', name: 'splash'),
   home(path: '/home', name: 'home'),
   register(path: '/register', name: 'register'),
   login(path: '/login', name: 'login'),

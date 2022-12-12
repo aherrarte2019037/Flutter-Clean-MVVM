@@ -11,6 +11,7 @@ class Navigation {
     errorBuilder: (context, state) => const _RouteWrapper(
       child: Text('Route not found'),
     ),
+    initialLocation: Routes.splash.path,
     routes: [
       GoRoute(
         path: Routes.splash.path,
