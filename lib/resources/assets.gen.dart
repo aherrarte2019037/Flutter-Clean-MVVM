@@ -12,8 +12,8 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  /// File path: assets/images/splash_logo.webp
-  AssetGenImage get splashLogo => const AssetGenImage('assets/images/splash_logo.webp');
+  /// File path: assets/images/splash_logo.png
+  AssetGenImage get splashLogo => const AssetGenImage('assets/images/splash_logo.png');
 
   /// List of all assets
   List<AssetGenImage> get values => [splashLogo];

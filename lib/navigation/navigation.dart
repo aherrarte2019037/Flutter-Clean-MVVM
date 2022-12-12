@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_clean_mvvm/navigation/routes.dart';
 import 'package:flutter_clean_mvvm/presentation/splash/splash_page.dart';
 import 'package:go_router/go_router.dart';
 
@@ -12,35 +13,41 @@ class Navigation {
     ),
     routes: [
       GoRoute(
-        path: '/splash',
+        path: Routes.splash.path,
+        name: Routes.splash.name,
         builder: (context, state) => const SplashPage(),
       ),
       GoRoute(
-        path: '/home',
+        path: Routes.home.path,
+        name: Routes.home.path,
         builder: (context, state) => const _RouteWrapper(
-          child: Text('/ - /home'),
+          child: Text('/home'),
         ),
       ),
       GoRoute(
-        path: '/register',
+        path: Routes.register.path,
+        name: Routes.register.name,
         builder: (context, state) => const _RouteWrapper(
           child: Text('/register'),
         ),
       ),
       GoRoute(
-        path: '/login',
+        path: Routes.login.path,
+        name: Routes.login.name,
         builder: (context, state) => const _RouteWrapper(
           child: Text('/login'),
         ),
       ),
       GoRoute(
-        path: '/onboarding',
+        path: Routes.onboarding.path,
+        name: Routes.onboarding.name,
         builder: (context, state) => const _RouteWrapper(
           child: Text('/onboarding'),
         ),
       ),
       GoRoute(
-        path: '/forgot-password',
+        path: Routes.forgotPassword.path,
+        name: Routes.forgotPassword.name,
         builder: (context, state) => const _RouteWrapper(
           child: Text('/forgot-password'),
         ),
