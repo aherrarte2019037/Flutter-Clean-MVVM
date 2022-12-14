@@ -16,6 +16,7 @@ dependencies:
   go_router: ^5.2.4
   flutter_native_splash: ^2.2.16
   flutter_launcher_icons: ^0.11.0
+  flutter_svg: ^1.1.6
 
 dev_dependencies:
   flutter_test:
@@ -48,6 +49,8 @@ flutter:
 flutter_gen:
   output: lib/resources/
   line_length: 120
+  integrations:
+    flutter_svg: true
 
 flutter_native_splash:
   color: "#ED9728"

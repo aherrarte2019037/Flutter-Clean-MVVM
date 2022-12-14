@@ -8,15 +8,32 @@
 // ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal
 
 import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/services.dart';
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
+
+  /// File path: assets/images/ic_launcher.png
+  AssetGenImage get icLauncher => const AssetGenImage('assets/images/ic_launcher.png');
+
+  /// File path: assets/images/onboarding_1.svg
+  SvgGenImage get onboarding1 => const SvgGenImage('assets/images/onboarding_1.svg');
+
+  /// File path: assets/images/onboarding_2.svg
+  SvgGenImage get onboarding2 => const SvgGenImage('assets/images/onboarding_2.svg');
+
+  /// File path: assets/images/onboarding_3.svg
+  SvgGenImage get onboarding3 => const SvgGenImage('assets/images/onboarding_3.svg');
+
+  /// File path: assets/images/onboarding_4.svg
+  SvgGenImage get onboarding4 => const SvgGenImage('assets/images/onboarding_4.svg');
 
   /// File path: assets/images/splash_logo.png
   AssetGenImage get splashLogo => const AssetGenImage('assets/images/splash_logo.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [splashLogo];
+  List<dynamic> get values => [icLauncher, onboarding1, onboarding2, onboarding3, onboarding4, splashLogo];
 }
 
 class Assets {
@@ -84,6 +101,57 @@ class AssetGenImage {
   }
 
   ImageProvider provider() => AssetImage(_assetName);
+
+  String get path => _assetName;
+
+  String get keyName => _assetName;
+}
+
+class SvgGenImage {
+  const SvgGenImage(this._assetName);
+
+  final String _assetName;
+
+  SvgPicture svg({
+    Key? key,
+    bool matchTextDirection = false,
+    AssetBundle? bundle,
+    String? package,
+    double? width,
+    double? height,
+    BoxFit fit = BoxFit.contain,
+    AlignmentGeometry alignment = Alignment.center,
+    bool allowDrawingOutsideViewBox = false,
+    WidgetBuilder? placeholderBuilder,
+    Color? color,
+    BlendMode colorBlendMode = BlendMode.srcIn,
+    String? semanticsLabel,
+    bool excludeFromSemantics = false,
+    Clip clipBehavior = Clip.hardEdge,
+    bool cacheColorFilter = false,
+    SvgTheme? theme,
+  }) {
+    return SvgPicture.asset(
+      _assetName,
+      key: key,
+      matchTextDirection: matchTextDirection,
+      bundle: bundle,
+      package: package,
+      width: width,
+      height: height,
+      fit: fit,
+      alignment: alignment,
+      allowDrawingOutsideViewBox: allowDrawingOutsideViewBox,
+      placeholderBuilder: placeholderBuilder,
+      color: color,
+      colorBlendMode: colorBlendMode,
+      semanticsLabel: semanticsLabel,
+      excludeFromSemantics: excludeFromSemantics,
+      clipBehavior: clipBehavior,
+      cacheColorFilter: cacheColorFilter,
+      theme: theme,
+    );
+  }
 
   String get path => _assetName;
 
