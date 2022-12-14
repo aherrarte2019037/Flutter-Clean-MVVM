@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tutapp/resources/fonts.gen.dart';
+import 'package:tutapp/ui/theme/custom_scroll_behaviour.dart';
 
 class AppThemeData {
   AppThemeData._();
@@ -21,4 +22,6 @@ class AppThemeData {
       centerTitle: true,
     ),
   );
+
+  static const ScrollBehavior scrollBehavior = CustomScrollBehaviour();
 }

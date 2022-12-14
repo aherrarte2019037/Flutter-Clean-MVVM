@@ -25,6 +25,7 @@ class _ApplicationState extends State<Application> {
       debugShowCheckedModeBanner: false,
       theme: AppThemeData.lightTheme,
       title: StringsManager.appTitle,
+      scrollBehavior: AppThemeData.scrollBehavior,
     );
   }
 }
