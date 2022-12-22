@@ -5,11 +5,9 @@ class DarkStatusBar extends StatelessWidget {
   const DarkStatusBar({
     super.key,
     required this.child,
-    required this.style,
   });
 
   final Widget child;
-  final SystemUiOverlayStyle style;
 
   @override
   Widget build(BuildContext context) {
