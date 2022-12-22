@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tutapp/navigation/routes.dart';
-import 'package:tutapp/presentation/onboarding/onboarding_page.dart';
+import 'package:tutapp/presentation/onboarding/onboarding_carousel.dart';
 
 class Navigation {
   const Navigation._();
@@ -37,7 +37,7 @@ class Navigation {
       GoRoute(
         path: Routes.onboarding.path,
         name: Routes.onboarding.name,
-        builder: (context, state) => const OnboardingPage(),
+        builder: (context, state) => const OnboardingCarousel(),
       ),
       GoRoute(
         path: Routes.forgotPassword.path,

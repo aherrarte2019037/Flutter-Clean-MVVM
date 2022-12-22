@@ -152,6 +152,12 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "flutter_svg",
+      "rootUri": "file:///Users/angelherrarte/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_svg-1.1.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "flutter_test",
       "rootUri": "file:///Users/angelherrarte/development/flutter/packages/flutter_test",
       "packageUri": "lib/",
@@ -162,6 +168,12 @@
       "rootUri": "file:///Users/angelherrarte/development/flutter/packages/flutter_web_plugins",
       "packageUri": "lib/",
       "languageVersion": "2.17"
+    },
+    {
+      "name": "gap",
+      "rootUri": "file:///Users/angelherrarte/development/flutter/.pub-cache/hosted/pub.dartlang.org/gap-2.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "glob",
@@ -250,6 +262,18 @@
     {
       "name": "path",
       "rootUri": "file:///Users/angelherrarte/development/flutter/.pub-cache/hosted/pub.dartlang.org/path-1.8.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "path_drawing",
+      "rootUri": "file:///Users/angelherrarte/development/flutter/.pub-cache/hosted/pub.dartlang.org/path_drawing-1.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "path_parsing",
+      "rootUri": "file:///Users/angelherrarte/development/flutter/.pub-cache/hosted/pub.dartlang.org/path_parsing-1.0.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -374,7 +398,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2022-12-12T22:00:44.252958Z",
+  "generated": "2022-12-14T02:35:36.641533Z",
   "generator": "pub",
   "generatorVersion": "2.18.4"
 }

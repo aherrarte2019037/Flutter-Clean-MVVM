@@ -14,6 +14,12 @@ import 'package:flutter/services.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/arrow_left.png
+  AssetGenImage get arrowLeft => const AssetGenImage('assets/images/arrow_left.png');
+
+  /// File path: assets/images/arrow_right.png
+  AssetGenImage get arrowRight => const AssetGenImage('assets/images/arrow_right.png');
+
   /// File path: assets/images/ic_launcher.png
   AssetGenImage get icLauncher => const AssetGenImage('assets/images/ic_launcher.png');
 
@@ -33,7 +39,8 @@ class $AssetsImagesGen {
   AssetGenImage get splashLogo => const AssetGenImage('assets/images/splash_logo.png');
 
   /// List of all assets
-  List<dynamic> get values => [icLauncher, onboarding1, onboarding2, onboarding3, onboarding4, splashLogo];
+  List<dynamic> get values =>
+      [arrowLeft, arrowRight, icLauncher, onboarding1, onboarding2, onboarding3, onboarding4, splashLogo];
 }
 
 class Assets {
