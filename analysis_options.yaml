@@ -26,6 +26,7 @@ analyzer:
     implicit-dynamic: true
   
   errors:
+    todo: ignore
     invalid_annotation_target: error
     argument_type_not_assignable: error
     field_initializer_not_assignable: error

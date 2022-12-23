@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:tutapp/presentation/onboarding/onboarding_item.dart';
+import 'package:tutapp/features/onboarding/domain/onboarding_item.dart';
 import 'package:tutapp/ui/theme/color_theme.dart';
 import 'package:tutapp/ui/theme/font_theme.dart';
 

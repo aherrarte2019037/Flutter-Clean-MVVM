@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
+import 'package:tutapp/features/onboarding/domain/onboarding_item.dart';
+import 'package:tutapp/features/onboarding/widgets/onboarding_page.dart';
 import 'package:tutapp/localization/strings_manager.dart';
 import 'package:tutapp/navigation/routes.dart';
-import 'package:tutapp/presentation/onboarding/onboarding_item.dart';
-import 'package:tutapp/presentation/onboarding/onboarding_page.dart';
 import 'package:tutapp/resources/assets.gen.dart';
 import 'package:tutapp/ui/theme/color_theme.dart';
 import 'package:tutapp/ui/widgets/buttons/tappable_icon.dart';
