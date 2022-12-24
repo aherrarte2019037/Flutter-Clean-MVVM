@@ -18,6 +18,10 @@ dependencies:
   flutter_svg: ^1.1.6
   gap: ^2.0.1
   flutter_bloc: ^8.0.0
+  retrofit: ^3.3.1
+  dio: ^4.0.6
+  json_serializable: ^6.5.4
+  retrofit_generator: ^4.2.0
 
 dev_dependencies:
   flutter_test:
@@ -25,6 +29,7 @@ dev_dependencies:
 
   flutter_lints: ^2.0.0
   dart_code_metrics: ^5.1.0
+  build_runner: ^2.3.3
 
 flutter:
   uses-material-design: true
