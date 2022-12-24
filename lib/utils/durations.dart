@@ -1,4 +1,6 @@
 class Durations {
+  Durations._();
+
   static const long = 500;
   static const medium = 300;
   static const short = 150;
