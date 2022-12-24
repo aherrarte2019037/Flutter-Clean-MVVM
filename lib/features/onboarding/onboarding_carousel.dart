@@ -5,7 +5,7 @@ import 'package:tutapp/features/onboarding/widgets/onboarding_bottom_section.dar
 import 'package:tutapp/features/onboarding/widgets/onboarding_page.dart';
 import 'package:tutapp/ui/theme/color_theme.dart';
 import 'package:tutapp/ui/widgets/status_bar/dark_status_bar.dart';
-import 'package:tutapp/utils/bloc_extensions.dart';
+import 'package:tutapp/utils/extensions/bloc_extensions.dart';
 import 'package:tutapp/utils/durations.dart';
 
 class OnboardingCarousel extends StatefulWidget with HasPresenter<OnboardingPresenter> {
