@@ -1,74 +1,108 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:tutapp/features/login/login_page.dart';
 import 'package:tutapp/features/onboarding/onboarding_carousel.dart';
 import 'package:tutapp/features/onboarding/onboarding_presentation_model.dart';
 import 'package:tutapp/features/onboarding/onboarding_presenter.dart';
-import 'package:tutapp/navigation/routes.dart';
+import 'package:tutapp/navigation/transitions/fade_in_page_transition.dart';
+import 'package:tutapp/ui/widgets/blurred_background.dart';
+import 'package:tutapp/utils/durations.dart';
 
 class Navigation {
-  const Navigation._();
+  Navigation._();
 
-  static final router = GoRouter(
-    debugLogDiagnostics: true,
-    errorBuilder: (context, state) => const _RouteWrapper(
-      child: Text('Route not found'),
-    ),
-    initialLocation: Routes.onboarding.path,
-    routes: [
-      GoRoute(
-        path: Routes.home.path,
-        name: Routes.home.path,
-        builder: (context, state) => const _RouteWrapper(
-          child: Text('/home'),
-        ),
-      ),
-      GoRoute(
-        path: Routes.register.path,
-        name: Routes.register.name,
-        builder: (context, state) => const _RouteWrapper(
-          child: Text('/register'),
-        ),
-      ),
-      GoRoute(
-        path: Routes.login.path,
-        name: Routes.login.name,
-        builder: (context, state) => const _RouteWrapper(
-          child: Text('/login'),
-        ),
-      ),
-      GoRoute(
-        path: Routes.onboarding.path,
-        name: Routes.onboarding.name,
-        builder: (context, state) => OnboardingCarousel(
+  static final navigatorKey = GlobalKey<NavigatorState>();
+
+  static final routes = {
+    '/onboarding': (context) => OnboardingCarousel(
           presenter: OnboardingPresenter(
             OnboardingPresentationModel.initial(),
           ),
         ),
-      ),
-      GoRoute(
-        path: Routes.forgotPassword.path,
-        name: Routes.forgotPassword.name,
-        builder: (context, state) => const _RouteWrapper(
-          child: Text('/forgot-password'),
+    '/login': (context) => const LoginPage(),
+  };
+
+  static void pop() => popWithResult(null);
+
+  static void popWithResult<T>(T result) => navigatorKey.currentState?.pop(result);
+
+  static Future<T?>? push<T>(
+    Widget page, {
+    arguments,
+    bool fullScreenDialog = false,
+  }) async =>
+      navigatorKey.currentState?.push(
+        _materialRoute(page, fullscreenDialog: fullScreenDialog),
+      );
+
+  static Future<T?>? pushNamed<T>(
+    String routeName, {
+    arguments,
+    bool fullScreenDialog = false,
+  }) async =>
+      navigatorKey.currentState?.pushNamed(routeName);
+
+  static Future<T?>? pushReplacement<T>(
+    Widget page, {
+    arguments,
+    bool fullScreenDialog = false,
+  }) async =>
+      navigatorKey.currentState?.pushReplacement(
+        _materialRoute(page, fullscreenDialog: fullScreenDialog),
+      );
+
+  static Future<T?>? pushReplacementNamed<T>(
+    String routeName, {
+    arguments,
+    bool fullScreenDialog = false,
+  }) async =>
+      navigatorKey.currentState?.pushReplacementNamed(routeName);
+
+  static Future<T?>? pushModalRoute<T>(
+    Widget page, {
+    int? durationMillis,
+    bool dismissible = true,
+  }) =>
+      navigatorKey.currentState?.push(
+        _fadeInRoute(
+          BlurredBackground(child: page),
+          durationMillis: durationMillis,
+          opaque: false,
+          fullScreenDialog: true,
         ),
-      ),
-    ],
-  );
+      );
 }
 
-class _RouteWrapper extends StatelessWidget {
-  const _RouteWrapper({
-    required this.child,
-  });
+RoutePageBuilder _pageBuilder(Widget page) => (
+      context,
+      animation,
+      secondaryAnimation,
+    ) =>
+        page;
 
-  final Widget child;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Center(child: child),
-      ),
+Route<T> _materialRoute<T>(
+  Widget page, {
+  required bool fullscreenDialog,
+}) =>
+    MaterialPageRoute(
+      builder: (context) => page,
+      fullscreenDialog: fullscreenDialog,
     );
-  }
-}
+
+//ignore: long-parameter-list
+Route<T> _fadeInRoute<T>(
+  Widget page, {
+  int? durationMillis,
+  String? pageName,
+  bool opaque = true,
+  bool fadeOut = true,
+  bool fullScreenDialog = false,
+}) =>
+    PageRouteBuilder<T>(
+      opaque: opaque,
+      transitionDuration: Duration(
+        milliseconds: durationMillis ?? Durations.medium,
+      ),
+      pageBuilder: _pageBuilder(page),
+      transitionsBuilder: fadeInPageTransition(fadeOut: fadeOut),
+      fullscreenDialog: fullScreenDialog,
+    );

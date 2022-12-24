@@ -18,11 +18,11 @@ class Application extends StatefulWidget {
 class _ApplicationState extends State<Application> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routeInformationParser: Navigation.router.routeInformationParser,
-      routerDelegate: Navigation.router.routerDelegate,
-      routeInformationProvider: Navigation.router.routeInformationProvider,
+    return MaterialApp(
+      navigatorKey: Navigation.navigatorKey,
       debugShowCheckedModeBanner: false,
+      routes: Navigation.routes,
+      initialRoute: '/onboarding',
       theme: AppThemeData.lightTheme,
       title: StringsManager.appTitle,
       scrollBehavior: AppThemeData.scrollBehavior,
