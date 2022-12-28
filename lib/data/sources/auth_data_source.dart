@@ -6,8 +6,8 @@ abstract class AuthDataSource {
   Future<LoginResponse> login(LoginCredentials credentials);
 }
 
-class AuthDataSourceImplementer implements AuthDataSource {
-  const AuthDataSourceImplementer({
+class AuthDataSourceImpl implements AuthDataSource {
+  const AuthDataSourceImpl({
     required this.authService,
   });
 

@@ -4,8 +4,8 @@ abstract class InternetStatus {
   Future<bool> get isConnected;
 }
 
-class InternetStatusImplementer implements InternetStatus {
-  InternetStatusImplementer({
+class InternetStatusImpl implements InternetStatus {
+  InternetStatusImpl({
     required this.connectionChecker,
   });
 
