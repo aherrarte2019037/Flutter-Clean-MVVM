@@ -8,5 +8,12 @@ abstract class AuthServiceClient {
   factory AuthServiceClient(Dio dio, {required String baseUrl}) = _AuthServiceClient;
 
   @POST('/auth/login')
-  Future<LoginResponse> login();
+  // ignore: long-parameter-list
+  Future<LoginResponse> login({
+    @Field('email') required String email,
+    @Field('password') required String password,
+    @Field('imei') required String imei,
+    @Field('devicePlatform') required String devicePlatform,
+    @Field('deviceType') required String deviceType,
+  });
 }

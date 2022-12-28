@@ -308,6 +308,12 @@
       "languageVersion": "2.15"
     },
     {
+      "name": "internet_connection_checker",
+      "rootUri": "file:///Users/angelherrarte/development/flutter/.pub-cache/hosted/pub.dartlang.org/internet_connection_checker-1.0.0+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
       "name": "io",
       "rootUri": "file:///Users/angelherrarte/development/flutter/.pub-cache/hosted/pub.dartlang.org/io-1.0.3",
       "packageUri": "lib/",
@@ -596,7 +602,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2022-12-28T03:09:01.506983Z",
+  "generated": "2022-12-28T19:14:20.514318Z",
   "generator": "pub",
   "generatorVersion": "2.18.4"
 }

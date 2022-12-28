@@ -21,11 +21,23 @@ class _AuthServiceClient implements AuthServiceClient {
   String? baseUrl;
 
   @override
-  Future<LoginResponse> login() async {
+  Future<LoginResponse> login({
+    required email,
+    required password,
+    required imei,
+    required devicePlatform,
+    required deviceType,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final _data = {
+      'email': email,
+      'password': password,
+      'imei': imei,
+      'devicePlatform': devicePlatform,
+      'deviceType': deviceType,
+    };
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<LoginResponse>(Options(
       method: 'POST',
