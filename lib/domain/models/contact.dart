@@ -1,5 +1,5 @@
 class Contact {
-  Contact({
+  const Contact({
     required this.phone,
     required this.name,
     required this.email,

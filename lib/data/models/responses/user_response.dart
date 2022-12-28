@@ -7,7 +7,7 @@ part 'user_response.g.dart';
 class UserResponse {
   factory UserResponse.fromJson(Map<String, dynamic> json) => _$UserResponseFromJson(json);
 
-  UserResponse({
+  const UserResponse({
     required this.id,
     required this.name,
     required this.notificationsCount,

@@ -2,7 +2,7 @@ import 'package:tutapp/domain/models/contact.dart';
 import 'package:tutapp/domain/models/user.dart';
 
 class LoginResult {
-  LoginResult({
+  const LoginResult({
     required this.status,
     required this.message,
     required this.user,

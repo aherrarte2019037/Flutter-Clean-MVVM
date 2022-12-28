@@ -1,5 +1,5 @@
 class Id {
-  Id(this.value);
+  const Id(this.value);
 
   const Id.empty() : value = '';
 

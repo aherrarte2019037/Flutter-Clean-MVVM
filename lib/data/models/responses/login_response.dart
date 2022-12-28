@@ -9,7 +9,7 @@ part 'login_response.g.dart';
 class LoginResponse extends BaseResponse {
   factory LoginResponse.fromJson(Map<String, dynamic> json) => _$LoginResponseFromJson(json);
 
-  LoginResponse({
+  const LoginResponse({
     required super.status,
     required super.message,
     required this.user,

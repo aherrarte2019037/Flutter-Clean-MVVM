@@ -6,7 +6,7 @@ part 'contact_response.g.dart';
 class ContactResponse {
   factory ContactResponse.fromJson(Map<String, dynamic> json) => _$ContactResponseFromJson(json);
 
-  ContactResponse({
+  const ContactResponse({
     required this.phone,
     required this.name,
     required this.email,

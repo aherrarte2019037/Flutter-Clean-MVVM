@@ -1,7 +1,7 @@
 import 'package:tutapp/domain/models/id.dart';
 
 class User {
-  User({
+  const User({
     required this.id,
     required this.name,
     required this.notificationsCount,
