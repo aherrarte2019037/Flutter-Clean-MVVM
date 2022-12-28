@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'auth_service_client.dart';
+part of 'auth_service.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'auth_service_client.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
-class _AuthServiceClient implements AuthServiceClient {
-  _AuthServiceClient(
+class _AuthService implements AuthService {
+  _AuthService(
     this._dio, {
     this.baseUrl,
   }) {
