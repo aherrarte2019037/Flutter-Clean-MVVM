@@ -10,10 +10,10 @@ class BaseResponse {
     required this.message,
   });
 
-  @JsonKey(name: 'status')
+  @JsonKey(name: 'status', defaultValue: 0)
   final int status;
 
-  @JsonKey(name: 'messages')
+  @JsonKey(name: 'messages', defaultValue: 'Empty message')
   final String message;
 
   Map<String, dynamic> toJson() => _$BaseResponseToJson(this);

@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:tutapp/domain/models/contact.dart';
 part 'contact_response.g.dart';
 
 @JsonSerializable()
@@ -11,14 +12,25 @@ class ContactResponse {
     required this.email,
   });
 
-  @JsonKey(name: 'phone')
+  @JsonKey(name: 'phone', defaultValue: 0)
   final int phone;
 
-  @JsonKey(name: 'name')
+  @JsonKey(name: 'name', defaultValue: '')
   final String name;
 
-  @JsonKey(name: 'email')
+  @JsonKey(name: 'email', defaultValue: '')
   final String email;
 
   Map<String, dynamic> toJson() => _$ContactResponseToJson(this);
+
+  Contact toDomain() => Contact(
+        phone: phone,
+        name: name,
+        email: email,
+      );
+
+  static List<Contact> toListDomain(
+    List<ContactResponse> list,
+  ) =>
+      list.map((e) => e.toDomain()).toList();
 }

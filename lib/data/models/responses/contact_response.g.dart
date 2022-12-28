@@ -8,9 +8,9 @@ part of 'contact_response.dart';
 
 ContactResponse _$ContactResponseFromJson(Map<String, dynamic> json) =>
     ContactResponse(
-      phone: json['phone'] as int,
-      name: json['name'] as String,
-      email: json['email'] as String,
+      phone: json['phone'] as int? ?? 0,
+      name: json['name'] as String? ?? '',
+      email: json['email'] as String? ?? '',
     );
 
 Map<String, dynamic> _$ContactResponseToJson(ContactResponse instance) =>
