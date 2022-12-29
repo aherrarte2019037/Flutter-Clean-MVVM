@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:tutapp/data/internet_status.dart';
+import 'package:tutapp/data/network_status.dart';
 import 'package:tutapp/data/sources/auth_data_source.dart';
 import 'package:tutapp/domain/models/failure.dart';
 import 'package:tutapp/domain/models/login_credentials.dart';
@@ -18,18 +18,20 @@ class AuthRepositoryImpl implements AuthRepository {
   );
 
   final AuthDataSource _authDataSource;
-  final InternetStatus _internetStatus;
+  final NetworkStatus _internetStatus;
 
   @override
   Future<Either<Failure, LoginResult>> login({
     required LoginCredentials credentials,
   }) async {
     final bool isConnected = await _internetStatus.isConnected;
-    if (!isConnected) return const Left(Failure(code: 409, message: 'Check your internet connection'));
+    if (!isConnected) return Left(Failure.notConnected());
 
-    final response = await _authDataSource.login(credentials);
-    if (response.status != 0) return const Left(Failure(code: 500, message: 'Server error'));
-
-    return Right(response.toDomain());
+    try {
+      final response = await _authDataSource.login(credentials);
+      return Right(response.toDomain());
+    } catch (e) {
+      return Left(Failure.handle(e));
+    }
   }
 }

@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:tutapp/data/models/responses/login_response.dart';
-part 'auth_service.g.dart';
+part 'auth_client.g.dart';
 
 @RestApi(baseUrl: 'https://flutterclean.wiremockapi.cloud/')
-abstract class AuthService {
-  factory AuthService(Dio dio, {required String baseUrl}) = _AuthService;
+abstract class AuthClient {
+  factory AuthClient(Dio dio, {required String baseUrl}) = _AuthClient;
 
   @POST('/auth/login')
   // ignore: long-parameter-list
