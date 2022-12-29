@@ -1,11 +1,11 @@
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 
-abstract class NetworkStatus {
+abstract class ConnectionStatus {
   Future<bool> get isConnected;
 }
 
-class InternetStatusImpl implements NetworkStatus {
-  InternetStatusImpl({
+class ConnectionStatusImpl implements ConnectionStatus {
+  ConnectionStatusImpl({
     required this.connectionChecker,
   });
 
