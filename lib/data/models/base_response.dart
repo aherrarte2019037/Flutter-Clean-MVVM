@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:tutapp/data/models/server_status_response.dart';
 part 'base_response.g.dart';
 
 @JsonSerializable()
@@ -10,8 +11,8 @@ class BaseResponse {
     required this.message,
   });
 
-  @JsonKey(name: 'status', defaultValue: 0)
-  final int status;
+  @JsonKey(name: 'status', defaultValue: ServerStatusResponse.failed)
+  final ServerStatusResponse status;
 
   @JsonKey(name: 'messages', defaultValue: 'Empty message')
   final String message;

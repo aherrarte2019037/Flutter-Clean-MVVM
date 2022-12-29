@@ -1,3 +1,4 @@
+import 'package:tutapp/data/models/server_status_response.dart';
 import 'package:tutapp/domain/models/contact.dart';
 import 'package:tutapp/domain/models/user.dart';
 
@@ -9,7 +10,7 @@ class LoginResult {
     required this.contacts,
   });
 
-  final int status;
+  final ServerStatusResponse status;
   final String message;
   final User user;
   final List<Contact> contacts;
