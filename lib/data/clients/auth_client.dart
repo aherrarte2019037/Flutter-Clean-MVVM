@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:tutapp/data/models/responses/login_response.dart';
+import 'package:tutapp/data/models/login_response.dart';
 part 'auth_client.g.dart';
 
 @RestApi(baseUrl: 'https://flutterclean.wiremockapi.cloud/')

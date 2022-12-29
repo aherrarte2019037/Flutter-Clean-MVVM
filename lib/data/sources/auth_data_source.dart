@@ -1,4 +1,4 @@
-import 'package:tutapp/data/models/responses/login_response.dart';
+import 'package:tutapp/data/models/login_response.dart';
 import 'package:tutapp/data/clients/auth_client.dart';
 import 'package:tutapp/domain/models/login_credentials.dart';
 
