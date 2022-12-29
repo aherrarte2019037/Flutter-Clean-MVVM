@@ -428,6 +428,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "pretty_dio_logger",
+      "rootUri": "file:///Users/angelherrarte/development/flutter/.pub-cache/hosted/pub.dartlang.org/pretty_dio_logger-1.2.0-beta-1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "process",
       "rootUri": "file:///Users/angelherrarte/development/flutter/.pub-cache/hosted/pub.dartlang.org/process-4.2.4",
       "packageUri": "lib/",
@@ -602,7 +608,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2022-12-28T19:14:20.514318Z",
+  "generated": "2022-12-29T17:58:08.503100Z",
   "generator": "pub",
   "generatorVersion": "2.18.4"
 }
