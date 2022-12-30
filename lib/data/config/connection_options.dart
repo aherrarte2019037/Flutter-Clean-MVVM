@@ -1,5 +1,3 @@
-import 'package:tutapp/data/config/connection_headers.dart';
-
 class ConnectionOptions {
   const ConnectionOptions._();
 
@@ -12,4 +10,13 @@ class ConnectionOptions {
     'authorization': ConnectionHeaders.authorization,
     'language': ConnectionHeaders.language,
   };
+}
+
+class ConnectionHeaders {
+  ConnectionHeaders._();
+
+  static const contentType = 'application/json';
+  static const accept = 'application/json';
+  static const authorization = 'token';
+  static const language = 'en';
 }
