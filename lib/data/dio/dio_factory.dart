@@ -3,19 +3,27 @@ import 'package:flutter/foundation.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:tutapp/data/config/connection_options.dart';
 import 'package:tutapp/data/config/logger_options.dart';
+import 'package:tutapp/domain/models/local_storage_key.dart';
+import 'package:tutapp/domain/repositories/local_storage_repository.dart';
+import 'package:tutapp/localization/locales.dart';
 
 class DioFactory {
-  DioFactory._();
+  DioFactory(
+    this._localStorageRepository,
+  );
 
-  Future<Dio> get instance => _setUp();
+  final LocalStorageRepository _localStorageRepository;
 
-  Future<Dio> _setUp() async {
+  Future<Dio> getDio() async {
     final dio = Dio();
-    dio.options = BaseOptions(
-      baseUrl: ConnectionOptions.baseUrl,
-      connectTimeout: ConnectionOptions.connectTimeout,
-      receiveTimeout: ConnectionOptions.receiveTimeout,
-      headers: ConnectionOptions.headers,
+    final userLocale = await _localStorageRepository.read<Locales>(
+      key: LocalStorageKey.userLocale,
+      defaultValue: Locales.enUS,
+    );
+
+    dio.options = ConnectionOptions(
+      baseUrl: 'baseUrl',
+      locale: userLocale,
     );
 
     if (!kReleaseMode) {
