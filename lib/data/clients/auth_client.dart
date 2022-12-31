@@ -13,7 +13,7 @@ abstract class AuthClient {
   Future<LoginResponse> login({
     @Field('email') required String email,
     @Field('password') required String password,
-    @Field('imei') required String imei,
+    @Field('deviceIdentifier') required String deviceIdentifier,
     @Field('devicePlatform') required String devicePlatform,
     @Field('deviceType') required String deviceType,
   });

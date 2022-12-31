@@ -14,13 +14,13 @@ class AuthDataSourceImpl implements AuthDataSource {
   final AuthClient authClient;
 
   @override
-  Future<LoginResponse> login(LoginParams credentials) async {
+  Future<LoginResponse> login(LoginParams params) async {
     return await authClient.login(
-      devicePlatform: credentials.devicePlatform,
-      deviceType: credentials.deviceType,
-      email: credentials.email,
-      imei: credentials.imei,
-      password: credentials.password,
+      devicePlatform: params.devicePlatform,
+      deviceType: params.deviceType,
+      email: params.email,
+      deviceIdentifier: params.deviceIdentifier,
+      password: params.password,
     );
   }
 }

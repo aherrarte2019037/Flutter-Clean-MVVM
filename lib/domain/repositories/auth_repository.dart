@@ -8,7 +8,7 @@ import 'package:tutapp/utils/extensions/either_extension.dart';
 
 abstract class AuthRepository {
   Future<Either<Failure, LoginResult>> login({
-    required LoginParams credentials,
+    required LoginParams params,
   });
 }
 
@@ -23,13 +23,13 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<Either<Failure, LoginResult>> login({
-    required LoginParams credentials,
+    required LoginParams params,
   }) async {
     final bool isConnected = await _connectionStatus.isConnected;
     if (!isConnected) return failure(Failure.notConnected());
 
     try {
-      final response = await _authDataSource.login(credentials);
+      final response = await _authDataSource.login(params);
       return success(response.toDomain());
     } catch (e) {
       return failure(Failure.handle(e));

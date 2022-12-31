@@ -24,7 +24,7 @@ class _AuthClient implements AuthClient {
   Future<LoginResponse> login({
     required email,
     required password,
-    required imei,
+    required deviceIdentifier,
     required devicePlatform,
     required deviceType,
   }) async {
@@ -34,7 +34,7 @@ class _AuthClient implements AuthClient {
     final _data = {
       'email': email,
       'password': password,
-      'imei': imei,
+      'deviceIdentifier': deviceIdentifier,
       'devicePlatform': devicePlatform,
       'deviceType': deviceType,
     };
