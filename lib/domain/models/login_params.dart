@@ -4,12 +4,12 @@ class LoginParams {
     required this.password,
     required this.deviceIdentifier,
     required this.devicePlatform,
-    required this.deviceType,
+    required this.deviceName,
   });
   
   final String email;
   final String password;
   final String deviceIdentifier;
   final String devicePlatform;
-  final String deviceType;
+  final String deviceName;
 }

@@ -15,6 +15,6 @@ abstract class AuthClient {
     @Field('password') required String password,
     @Field('deviceIdentifier') required String deviceIdentifier,
     @Field('devicePlatform') required String devicePlatform,
-    @Field('deviceType') required String deviceType,
+    @Field('deviceName') required String deviceName,
   });
 }

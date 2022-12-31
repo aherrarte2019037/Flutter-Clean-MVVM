@@ -26,7 +26,7 @@ class _AuthClient implements AuthClient {
     required password,
     required deviceIdentifier,
     required devicePlatform,
-    required deviceType,
+    required deviceName,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -36,7 +36,7 @@ class _AuthClient implements AuthClient {
       'password': password,
       'deviceIdentifier': deviceIdentifier,
       'devicePlatform': devicePlatform,
-      'deviceType': deviceType,
+      'deviceName': deviceName,
     };
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<LoginResponse>(Options(

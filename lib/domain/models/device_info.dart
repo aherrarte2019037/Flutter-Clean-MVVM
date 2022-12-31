@@ -1,22 +1,29 @@
 class DeviceInfo {
-  DeviceInfo({
+  const DeviceInfo({
     required this.identifier,
     required this.platform,
-    required this.type,
+    required this.name,
   });
+
+  const DeviceInfo.unknown()
+      : identifier = 'unknown',
+        platform = DevicePlatform.unknown,
+        name = 'unknown';
 
   final String identifier;
   final DevicePlatform platform;
-  final String type;
+  final String name;
 }
 
 enum DevicePlatform {
   ios('ios'),
   android('android'),
+  fuchsia('fuchsia'),
   web('web'),
   linux('linux'),
   macOs('macOs'),
-  windows('windows');
+  windows('windows'),
+  unknown('unknown');
 
   const DevicePlatform(this.value);
 

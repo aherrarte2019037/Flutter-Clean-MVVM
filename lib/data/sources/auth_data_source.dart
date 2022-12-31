@@ -17,7 +17,7 @@ class AuthDataSourceImpl implements AuthDataSource {
   Future<LoginResponse> login(LoginParams params) async {
     return await authClient.login(
       devicePlatform: params.devicePlatform,
-      deviceType: params.deviceType,
+      deviceName: params.deviceName,
       email: params.email,
       deviceIdentifier: params.deviceIdentifier,
       password: params.password,
