@@ -1,9 +1,9 @@
 import 'package:tutapp/data/models/login_response.dart';
 import 'package:tutapp/data/clients/auth_client.dart';
-import 'package:tutapp/domain/models/login_credentials.dart';
+import 'package:tutapp/domain/models/login_params.dart';
 
 abstract class AuthDataSource {
-  Future<LoginResponse> login(LoginCredentials credentials);
+  Future<LoginResponse> login(LoginParams credentials);
 }
 
 class AuthDataSourceImpl implements AuthDataSource {
@@ -14,7 +14,7 @@ class AuthDataSourceImpl implements AuthDataSource {
   final AuthClient authClient;
 
   @override
-  Future<LoginResponse> login(LoginCredentials credentials) async {
+  Future<LoginResponse> login(LoginParams credentials) async {
     return await authClient.login(
       devicePlatform: credentials.devicePlatform,
       deviceType: credentials.deviceType,

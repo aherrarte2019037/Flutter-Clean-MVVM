@@ -2,13 +2,13 @@ import 'package:dartz/dartz.dart';
 import 'package:tutapp/data/config/connection_status.dart';
 import 'package:tutapp/data/sources/auth_data_source.dart';
 import 'package:tutapp/domain/models/failure.dart';
-import 'package:tutapp/domain/models/login_credentials.dart';
+import 'package:tutapp/domain/models/login_params.dart';
 import 'package:tutapp/domain/models/login_result.dart';
 import 'package:tutapp/utils/extensions/either_extension.dart';
 
 abstract class AuthRepository {
   Future<Either<Failure, LoginResult>> login({
-    required LoginCredentials credentials,
+    required LoginParams credentials,
   });
 }
 
@@ -23,7 +23,7 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<Either<Failure, LoginResult>> login({
-    required LoginCredentials credentials,
+    required LoginParams credentials,
   }) async {
     final bool isConnected = await _connectionStatus.isConnected;
     if (!isConnected) return failure(Failure.notConnected());

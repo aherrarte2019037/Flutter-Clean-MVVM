@@ -1,5 +1,5 @@
-class LoginCredentials {
-  const LoginCredentials({
+class LoginParams {
+  const LoginParams({
     required this.email,
     required this.password,
     required this.imei,
