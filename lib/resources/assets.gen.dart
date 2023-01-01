@@ -35,12 +35,12 @@ class $AssetsImagesGen {
   /// File path: assets/images/onboarding_4.svg
   SvgGenImage get onboarding4 => const SvgGenImage('assets/images/onboarding_4.svg');
 
-  /// File path: assets/images/splash_logo.png
-  AssetGenImage get splashLogo => const AssetGenImage('assets/images/splash_logo.png');
+  /// File path: assets/images/app_logo.png
+  AssetGenImage get appLogo => const AssetGenImage('assets/images/app_logo.png');
 
   /// List of all assets
   List<dynamic> get values =>
-      [arrowLeft, arrowRight, icLauncher, onboarding1, onboarding2, onboarding3, onboarding4, splashLogo];
+      [arrowLeft, arrowRight, icLauncher, onboarding1, onboarding2, onboarding3, onboarding4, appLogo];
 }
 
 class Assets {

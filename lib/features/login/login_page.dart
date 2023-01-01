@@ -29,7 +29,7 @@ class _LoginPageState extends State<LoginPage> with PresenterState<LoginViewMode
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Assets.images.splashLogo.image(),
+              Assets.images.appLogo.image(),
             ],
           ),
         ),
