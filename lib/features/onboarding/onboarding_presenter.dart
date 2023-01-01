@@ -12,7 +12,7 @@ class OnboardingPresenter extends Cubit<OnboardingViewModel> {
   void onPageChanged(int index) => emit(_model.copyWith(carouselIndex: index));
 
   void onTapNextPage() {
-    if (state.onLastItem) onTapSkip();
+    if (_model.onLastItem) onTapSkip();
   }
 
   void onTapSkip() => Navigation.pushReplacementNamed('/login');
