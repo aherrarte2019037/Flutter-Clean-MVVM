@@ -5,11 +5,9 @@ class LightStatusBar extends StatelessWidget {
   const LightStatusBar({
     super.key,
     required this.child,
-    required this.style,
   });
 
   final Widget child;
-  final SystemUiOverlayStyle style;
 
   @override
   Widget build(BuildContext context) {

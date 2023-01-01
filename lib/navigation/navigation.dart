@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tutapp/features/login/login_page.dart';
+import 'package:tutapp/features/login/login_presentation_model.dart';
+import 'package:tutapp/features/login/login_presenter.dart';
 import 'package:tutapp/features/onboarding/onboarding_carousel.dart';
 import 'package:tutapp/features/onboarding/onboarding_presentation_model.dart';
 import 'package:tutapp/features/onboarding/onboarding_presenter.dart';
@@ -18,7 +20,11 @@ class Navigation {
             OnboardingPresentationModel.initial(),
           ),
         ),
-    '/login': (context) => const LoginPage(),
+    '/login': (context) => LoginPage(
+          presenter: LoginPresenter(
+            LoginPresentationModel.initial(),
+          ),
+        ),
   };
 
   static void pop() => popWithResult(null);
