@@ -62,15 +62,13 @@ class _OnboardingCarouselState extends State<OnboardingCarousel>
     return DarkStatusBar(
       child: Scaffold(
         backgroundColor: ColorTheme.blackWhite.shade100,
-        body: SafeArea(
-          child: stateObserver(
-            builder: (context, state) => PageView.builder(
-              controller: _pageController,
-              itemCount: state.carouselItemCount,
-              onPageChanged: presenter.onPageChanged,
-              itemBuilder: (_, index) => OnboardingPage(
-                item: state.carouselItems[index],
-              ),
+        body: stateObserver(
+          builder: (context, state) => PageView.builder(
+            controller: _pageController,
+            itemCount: state.carouselItemCount,
+            onPageChanged: presenter.onPageChanged,
+            itemBuilder: (_, index) => OnboardingPage(
+              item: state.carouselItems[index],
             ),
           ),
         ),
