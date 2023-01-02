@@ -13,4 +13,9 @@ class StringsManager {
   static const onboardingSubtitle3 = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry #3';
   static const onboardingSubtitle4 = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry #4';
   static const skipAction = 'Skip';
+  static const loginEmailFieldHint = 'Email';
+  static const loginPasswordFieldHint = 'Password';
+  static const loginForgotPasswordLabel = 'Forgot password';
+  static const loginRegisterLabel = 'Not a member? Sign up';
+  static const loginButtonLabel = 'Login';
 }

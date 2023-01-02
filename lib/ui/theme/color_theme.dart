@@ -32,6 +32,22 @@ class ColorTheme {
     },
   );
 
+  static const MaterialColor red = MaterialColor(
+    _primaryRed,
+    {
+      100: Color(0xffffc7b9),
+      200: Color(0xffffa08b),
+      300: Color(0xffff7a59),
+      400: Color(0xffff6c47),
+      500: Color(_primaryRed),
+      600: Color(0xffff1e00),
+      700: Color(0xffff1100),
+      800: Color(0xfff30000),
+      900: Color(0xffd70000),
+    },
+  );
+
   static const int _primaryOrange = 0xFFED9728;
   static const int _primaryBlackWhite = 0xff737477;
+  static const int _primaryRed = 0xffff5232;
 }
