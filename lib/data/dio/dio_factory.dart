@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
-import 'package:tutapp/data/config/config_constants.dart';
 import 'package:tutapp/data/config/connection_options.dart';
 import 'package:tutapp/data/config/logger_options.dart';
 import 'package:tutapp/domain/models/local_storage_key.dart';
@@ -23,7 +22,6 @@ class DioFactory {
     );
 
     dio.options = ConnectionOptions(
-      baseUrl: ConfigConstants.baseUrl,
       locale: userLocale,
     );
 
