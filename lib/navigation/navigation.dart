@@ -3,9 +3,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:tutapp/data/clients/auth_client.dart';
-import 'package:tutapp/data/config/config_constants.dart';
-import 'package:tutapp/data/config/connection_status.dart';
 import 'package:tutapp/data/sources/auth_data_source.dart';
+import 'package:tutapp/data/sources/connection_status.dart';
 import 'package:tutapp/domain/repositories/auth_repository.dart';
 import 'package:tutapp/domain/repositories/device_info_repository.dart';
 import 'package:tutapp/domain/use_cases/login_usecase.dart';
@@ -41,7 +40,7 @@ class Navigation {
             LoginUseCase(
               AuthRepositoryImpl(
                 AuthDataSourceImpl(
-                  authClient: AuthClient(Dio(), baseUrl: ConfigConstants.baseUrl),
+                  authClient: AuthClient(Dio()),
                 ),
                 ConnectionStatusImpl(connectionChecker: InternetConnectionChecker()),
               ),

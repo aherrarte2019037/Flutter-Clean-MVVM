@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'dart:developer';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tutapp/domain/use_cases/login_usecase.dart';
 import 'package:tutapp/features/login/login_presentation_model.dart';
@@ -37,8 +37,8 @@ class LoginPresenter extends Cubit<LoginViewModel> {
       password: _model.passwordValue,
     ))
       ..fold(
-        (failure) => debugPrint(failure.toString()),
-        (result) => debugPrint(result.toString()),
+        (failure) => inspect(failure),
+        (result) => inspect(result),
       );
   }
 
