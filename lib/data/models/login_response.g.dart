@@ -11,7 +11,7 @@ LoginResponse _$LoginResponseFromJson(Map<String, dynamic> json) =>
       status:
           $enumDecodeNullable(_$ServerStatusResponseEnumMap, json['status']) ??
               ServerStatusResponse.failed,
-      message: json['messages'] as String? ?? 'Empty message',
+      message: json['message'] as String? ?? 'Empty message',
       user: UserResponse.fromJson(json['user'] as Map<String, dynamic>),
       contacts: (json['contacts'] as List<dynamic>?)
               ?.map((e) => ContactResponse.fromJson(e as Map<String, dynamic>))
@@ -22,7 +22,7 @@ LoginResponse _$LoginResponseFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$LoginResponseToJson(LoginResponse instance) =>
     <String, dynamic>{
       'status': _$ServerStatusResponseEnumMap[instance.status]!,
-      'messages': instance.message,
+      'message': instance.message,
       'user': instance.user,
       'contacts': instance.contacts,
     };

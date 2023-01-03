@@ -46,7 +46,7 @@ class _AuthClient implements AuthClient {
     )
             .compose(
               _dio.options,
-              '/auth/login',
+              'auth/login',
               queryParameters: queryParameters,
               data: _data,
             )

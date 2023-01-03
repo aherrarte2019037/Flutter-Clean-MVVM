@@ -20,7 +20,7 @@ class UserResponse {
   @JsonKey(name: 'name', defaultValue: '')
   final String name;
 
-  @JsonKey(name: 'notifications_count', defaultValue: 0)
+  @JsonKey(name: 'notificationsCount', defaultValue: 0)
   final int notificationsCount;
 
   @JsonKey(name: 'email', defaultValue: '')

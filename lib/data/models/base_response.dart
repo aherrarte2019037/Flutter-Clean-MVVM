@@ -14,7 +14,7 @@ class BaseResponse {
   @JsonKey(name: 'status', defaultValue: ServerStatusResponse.failed)
   final ServerStatusResponse status;
 
-  @JsonKey(name: 'messages', defaultValue: 'Empty message')
+  @JsonKey(name: 'message', defaultValue: 'Empty message')
   final String message;
 
   Map<String, dynamic> toJson() => _$BaseResponseToJson(this);

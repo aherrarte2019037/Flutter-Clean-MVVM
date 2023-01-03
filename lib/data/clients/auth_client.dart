@@ -8,7 +8,7 @@ part 'auth_client.g.dart';
 abstract class AuthClient {
   factory AuthClient(Dio dio, {required String baseUrl}) = _AuthClient;
 
-  @POST('/auth/login')
+  @POST('auth/login')
   // ignore: long-parameter-list
   Future<LoginResponse> login({
     @Field('email') required String email,

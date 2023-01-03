@@ -10,13 +10,13 @@ BaseResponse _$BaseResponseFromJson(Map<String, dynamic> json) => BaseResponse(
       status:
           $enumDecodeNullable(_$ServerStatusResponseEnumMap, json['status']) ??
               ServerStatusResponse.failed,
-      message: json['messages'] as String? ?? 'Empty message',
+      message: json['message'] as String? ?? 'Empty message',
     );
 
 Map<String, dynamic> _$BaseResponseToJson(BaseResponse instance) =>
     <String, dynamic>{
       'status': _$ServerStatusResponseEnumMap[instance.status]!,
-      'messages': instance.message,
+      'message': instance.message,
     };
 
 const _$ServerStatusResponseEnumMap = {
