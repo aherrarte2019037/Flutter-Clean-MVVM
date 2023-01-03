@@ -3,6 +3,7 @@ import 'package:tutapp/data/models/base_response.dart';
 import 'package:tutapp/data/models/contact_response.dart';
 import 'package:tutapp/data/models/user_response.dart';
 import 'package:tutapp/domain/models/login_result.dart';
+import 'package:tutapp/data/models/server_status_response.dart';
 part 'login_response.g.dart';
 
 @JsonSerializable()

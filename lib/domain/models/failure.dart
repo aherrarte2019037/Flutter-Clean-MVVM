@@ -3,30 +3,40 @@ import 'package:dio/dio.dart';
 //ignore_for_file: no-magic-number
 class Failure {
   Failure.handle(Object error) {
-    if (error is DioError) type = _handleNetworkError(error);
-    type = FailureType.unknown;
+    type = error is DioError ? _handleNetworkError(error) : FailureType.unknown;
   }
 
-  Failure.notConnected(): type = FailureType.notConnected;
+  Failure.notConnected() : type = FailureType.notConnected;
 
   late final FailureType type;
 
   FailureType _handleNetworkError(DioError error) {
     switch (error.type) {
-      case DioErrorType.connectTimeout: return FailureType.connectTimeout;
-      case DioErrorType.sendTimeout:    return FailureType.sendTimeout;
-      case DioErrorType.receiveTimeout: return FailureType.receiveTimeout;
+      case DioErrorType.connectTimeout:
+        return FailureType.connectTimeout;
+      case DioErrorType.sendTimeout:
+        return FailureType.sendTimeout;
+      case DioErrorType.receiveTimeout:
+        return FailureType.receiveTimeout;
       case DioErrorType.response:
         switch (error.response!.statusCode) {
-          case 400: return FailureType.badRequest;
-          case 401: return FailureType.unauthorized;
-          case 403: return FailureType.forbidden;
-          case 404: return FailureType.notFound;
-          case 500: return FailureType.serverError;
-          default: return FailureType.unknown;
+          case 400:
+            return FailureType.badRequest;
+          case 401:
+            return FailureType.unauthorized;
+          case 403:
+            return FailureType.forbidden;
+          case 404:
+            return FailureType.notFound;
+          case 500:
+            return FailureType.serverError;
+          default:
+            return FailureType.unknown;
         }
-      case DioErrorType.cancel: return FailureType.cancel;
-      case DioErrorType.other:  return FailureType.unknown;
+      case DioErrorType.cancel:
+        return FailureType.cancel;
+      case DioErrorType.other:
+        return FailureType.unknown;
     }
   }
 }
@@ -48,7 +58,7 @@ enum FailureType {
   unknown(999, 'Unknown error');
 
   const FailureType(this.code, this.message);
-  
+
   final int code;
   final String message;
 }

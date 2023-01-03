@@ -41,67 +41,69 @@ class _LoginPageState extends State<LoginPage> with PresenterState<LoginViewMode
     return DarkStatusBar(
       child: Scaffold(
         backgroundColor: ColorTheme.blackWhite.shade100,
-        body: Center(
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const Gap(40),
-                Assets.images.appLogo.image(),
-                Padding(
-                  padding: _horizontalPadding,
-                  child: TextInput(
-                    onChanged: presenter.onEmailValueChanged,
-                    initialValue: state.emailValue,
-                    errorText: state.emailErrorText,
-                    hintText: StringsManager.loginEmailFieldHint,
-                    keyboardType: TextInputType.emailAddress,
-                  ),
-                ),
-                const Gap(30),
-                Padding(
-                  padding: _horizontalPadding,
-                  child: TextInput.secret(
-                    onChanged: presenter.onPasswordValueChanged,
-                    initialValue: state.passwordValue,
-                    errorText: state.passwordErrorText,
-                    hintText: StringsManager.loginPasswordFieldHint,
-                  ),
-                ),
-                const Gap(45),
-                Padding(
-                  padding: _horizontalPadding,
-                  child: Button(
-                    onTap: presenter.onTapLogin,
-                    label: StringsManager.loginButtonLabel,
-                    size: ButtonSize.fixed(
-                      height: _buttonHeight,
-                      width: double.infinity,
+        body: stateObserver(
+          builder: (context, state) => Center(
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Gap(40),
+                  Assets.images.appLogo.image(),
+                  Padding(
+                    padding: _horizontalPadding,
+                    child: TextInput(
+                      onChanged: presenter.onEmailValueChanged,
+                      initialValue: state.emailValue,
+                      errorText: state.emailValidationResult.message,
+                      hintText: StringsManager.loginEmailFieldHint,
+                      keyboardType: TextInputType.emailAddress,
                     ),
                   ),
-                ),
-                const Gap(25),
-                Padding(
-                  padding: _horizontalPadding,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      TappableText(
-                        StringsManager.loginForgotPasswordLabel,
-                        onTap: presenter.onTapForgotPassword,
-                        textStyle: tappableTextStyle,
-                      ),
-                      TappableText(
-                        StringsManager.loginRegisterLabel,
-                        onTap: presenter.onTapRegister,
-                        textStyle: tappableTextStyle,
-                      ),
-                    ],
+                  const Gap(30),
+                  Padding(
+                    padding: _horizontalPadding,
+                    child: TextInput.secret(
+                      onChanged: presenter.onPasswordValueChanged,
+                      initialValue: state.passwordValue,
+                      errorText: state.passwordValidationResult.message,
+                      hintText: StringsManager.loginPasswordFieldHint,
+                    ),
                   ),
-                ),
-                const Gap(40),
-              ],
+                  const Gap(45),
+                  Padding(
+                    padding: _horizontalPadding,
+                    child: Button(
+                      onTap: presenter.onTapLogin,
+                      label: StringsManager.loginButtonLabel,
+                      size: ButtonSize.fixed(
+                        height: _buttonHeight,
+                        width: double.infinity,
+                      ),
+                    ),
+                  ),
+                  const Gap(25),
+                  Padding(
+                    padding: _horizontalPadding,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        TappableText(
+                          StringsManager.loginForgotPasswordLabel,
+                          onTap: presenter.onTapForgotPassword,
+                          textStyle: tappableTextStyle,
+                        ),
+                        TappableText(
+                          StringsManager.loginRegisterLabel,
+                          onTap: presenter.onTapRegister,
+                          textStyle: tappableTextStyle,
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Gap(40),
+                ],
+              ),
             ),
           ),
         ),

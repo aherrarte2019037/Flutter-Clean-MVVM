@@ -1,4 +1,14 @@
+import 'package:device_info_plus/device_info_plus.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:tutapp/data/clients/auth_client.dart';
+import 'package:tutapp/data/config/config_constants.dart';
+import 'package:tutapp/data/config/connection_status.dart';
+import 'package:tutapp/data/sources/auth_data_source.dart';
+import 'package:tutapp/domain/repositories/auth_repository.dart';
+import 'package:tutapp/domain/repositories/device_info_repository.dart';
+import 'package:tutapp/domain/use_cases/login_usecase.dart';
 import 'package:tutapp/features/login/login_page.dart';
 import 'package:tutapp/features/login/login_presentation_model.dart';
 import 'package:tutapp/features/login/login_presenter.dart';
@@ -8,6 +18,8 @@ import 'package:tutapp/features/onboarding/onboarding_presenter.dart';
 import 'package:tutapp/navigation/transitions/fade_in_page_transition.dart';
 import 'package:tutapp/ui/widgets/blurred_background.dart';
 import 'package:tutapp/utils/durations.dart';
+import 'package:tutapp/validators/email_validator.dart';
+import 'package:tutapp/validators/password_validator.dart';
 
 class Navigation {
   Navigation._();
@@ -22,7 +34,19 @@ class Navigation {
         ),
     '/login': (context) => LoginPage(
           presenter: LoginPresenter(
-            LoginPresentationModel.initial(),
+            LoginPresentationModel.initial(
+              EmailValidator(),
+              PasswordValidator(),
+            ),
+            LoginUseCase(
+              AuthRepositoryImpl(
+                AuthDataSourceImpl(
+                  authClient: AuthClient(Dio(), baseUrl: ConfigConstants.baseUrl),
+                ),
+                ConnectionStatusImpl(connectionChecker: InternetConnectionChecker()),
+              ),
+              DeviceInfoRepositoryImpl(DeviceInfoPlugin()),
+            ),
           ),
         ),
   };
