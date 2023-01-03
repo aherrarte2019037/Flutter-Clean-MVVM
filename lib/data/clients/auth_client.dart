@@ -4,11 +4,11 @@ import 'package:tutapp/data/config/config_constants.dart';
 import 'package:tutapp/data/models/login_response.dart';
 part 'auth_client.g.dart';
 
-@RestApi(baseUrl: ConfigConstants.baseUrl)
+@RestApi(baseUrl: ConfigConstants.authBaseUrl)
 abstract class AuthClient {
   factory AuthClient(Dio dio, {String baseUrl}) = _AuthClient;
 
-  @POST('auth/login')
+  @POST('login')
   // ignore: long-parameter-list
   Future<LoginResponse> login({
     @Field('email') required String email,

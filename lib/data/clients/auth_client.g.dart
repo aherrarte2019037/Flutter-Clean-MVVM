@@ -13,7 +13,7 @@ class _AuthClient implements AuthClient {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://flutterclean.wiremockapi.cloud/';
+    baseUrl ??= 'https://63b49b3e0f49ecf5088fa3f5.mockapi.io/api/v1/auth/';
   }
 
   final Dio _dio;
@@ -46,7 +46,7 @@ class _AuthClient implements AuthClient {
     )
             .compose(
               _dio.options,
-              'auth/login',
+              'login',
               queryParameters: queryParameters,
               data: _data,
             )
