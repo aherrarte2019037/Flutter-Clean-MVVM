@@ -6,7 +6,7 @@ part 'auth_client.g.dart';
 
 @RestApi(baseUrl: ConfigConstants.baseUrl)
 abstract class AuthClient {
-  factory AuthClient(Dio dio, {required String baseUrl}) = _AuthClient;
+  factory AuthClient(Dio dio, {String baseUrl}) = _AuthClient;
 
   @POST('auth/login')
   // ignore: long-parameter-list
