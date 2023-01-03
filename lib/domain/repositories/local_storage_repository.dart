@@ -16,11 +16,9 @@ abstract class LocalStorageRepository {
 }
 
 class LocalStorageRepositoryImpl implements LocalStorageRepository {
-  const LocalStorageRepositoryImpl(
-    this._localStorage,
-  );
+  const LocalStorageRepositoryImpl();
 
-  final FlutterSecureStorage _localStorage;
+  final _localStorage = const FlutterSecureStorage();
 
   @override
   Future<T> read<T>({

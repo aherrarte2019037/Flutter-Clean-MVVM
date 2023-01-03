@@ -320,6 +320,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "get_it",
+      "rootUri": "file:///Users/angelherrarte/development/flutter/.pub-cache/hosted/pub.dartlang.org/get_it-7.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "glob",
       "rootUri": "file:///Users/angelherrarte/development/flutter/.pub-cache/hosted/pub.dartlang.org/glob-2.1.1",
       "packageUri": "lib/",
@@ -674,7 +680,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2023-01-03T05:25:39.563384Z",
+  "generated": "2023-01-03T17:33:55.791622Z",
   "generator": "pub",
   "generatorVersion": "2.18.6"
 }

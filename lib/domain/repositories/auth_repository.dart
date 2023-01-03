@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:tutapp/data/config/connection_status.dart';
+import 'package:tutapp/data/sources/connection_status.dart';
 import 'package:tutapp/data/sources/auth_data_source.dart';
 import 'package:tutapp/domain/models/failure.dart';
 import 'package:tutapp/domain/models/login_params.dart';
