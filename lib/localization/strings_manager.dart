@@ -18,4 +18,7 @@ class StringsManager {
   static const loginForgotPasswordLabel = 'Forgot password';
   static const loginRegisterLabel = 'Not a member? Sign up';
   static const loginButtonLabel = 'Login';
+  static const emptyFieldError = 'Required field';
+  static const invalidEmailError = 'Invalid email address';
+  static const tooShortFieldError = 'Minimum 8 characters';
 }
