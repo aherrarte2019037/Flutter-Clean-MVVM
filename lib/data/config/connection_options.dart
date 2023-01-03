@@ -13,8 +13,8 @@ class ConnectionOptions extends BaseOptions {
     super.connectTimeout = durationTimeout;
     super.receiveTimeout = durationTimeout;
     super.headers = {
-      'content-type': 'application/json',
-      'accept': 'application/json',
+      'content-type': 'application/json; charset=utf-8',
+      'accept': 'application/json; charset=utf-8',
       'authorization': authToken,
       'language': locale.languageCode,
     };

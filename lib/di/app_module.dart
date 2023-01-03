@@ -6,6 +6,7 @@ import 'package:tutapp/data/config/config_constants.dart';
 import 'package:tutapp/data/dio/dio_factory.dart';
 import 'package:tutapp/data/sources/auth_data_source.dart';
 import 'package:tutapp/data/sources/connection_status.dart';
+import 'package:tutapp/domain/repositories/auth_repository.dart';
 import 'package:tutapp/domain/repositories/local_storage_repository.dart';
 import 'package:tutapp/validators/email_validator.dart';
 import 'package:tutapp/validators/password_validator.dart';
@@ -39,6 +40,9 @@ void _registerDependencies() {
 void _registerRepositories() {
   appModule.registerLazySingleton<LocalStorageRepository>(
     () => const LocalStorageRepositoryImpl(),
+  );
+  appModule.registerLazySingleton<AuthRepository>(
+    () => AuthRepositoryImpl(appModule<AuthDataSource>(), appModule<ConnectionStatus>()),
   );
 }
 

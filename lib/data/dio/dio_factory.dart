@@ -32,7 +32,7 @@ class DioFactory {
         requestBody: LoggerOptions.requestBody,
         requestHeader: LoggerOptions.requestHeader,
         responseBody: LoggerOptions.responseBody,
-        responseHeader: LoggerOptions.requestHeader,
+        responseHeader: LoggerOptions.responseHeader,
       ));
     }
 
