@@ -1,54 +1,37 @@
-import 'package:device_info_plus/device_info_plus.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:internet_connection_checker/internet_connection_checker.dart';
-import 'package:tutapp/data/clients/auth_client.dart';
-import 'package:tutapp/data/sources/auth_data_source.dart';
-import 'package:tutapp/data/sources/connection_status.dart';
-import 'package:tutapp/domain/repositories/auth_repository.dart';
-import 'package:tutapp/domain/repositories/device_info_repository.dart';
-import 'package:tutapp/domain/use_cases/login_usecase.dart';
+import 'package:tutapp/di/app_module.dart';
+import 'package:tutapp/domain/models/page_params.dart';
 import 'package:tutapp/features/login/login_page.dart';
-import 'package:tutapp/features/login/login_presentation_model.dart';
-import 'package:tutapp/features/login/login_presenter.dart';
+import 'package:tutapp/features/login/login_page_params.dart';
 import 'package:tutapp/features/onboarding/onboarding_carousel.dart';
-import 'package:tutapp/features/onboarding/onboarding_presentation_model.dart';
-import 'package:tutapp/features/onboarding/onboarding_presenter.dart';
+import 'package:tutapp/features/onboarding/onboarding_page_params.dart';
 import 'package:tutapp/navigation/transitions/fade_in_page_transition.dart';
 import 'package:tutapp/ui/widgets/blurred_background.dart';
 import 'package:tutapp/utils/durations.dart';
-import 'package:tutapp/validators/email_validator.dart';
-import 'package:tutapp/validators/password_validator.dart';
 
 class Navigation {
   Navigation._();
 
   static final navigatorKey = GlobalKey<NavigatorState>();
 
-  static final routes = {
-    '/onboarding': (context) => OnboardingCarousel(
-          presenter: OnboardingPresenter(
-            OnboardingPresentationModel.initial(),
-          ),
-        ),
-    '/login': (context) => LoginPage(
-          presenter: LoginPresenter(
-            LoginPresentationModel.initial(
-              EmailValidator(),
-              PasswordValidator(),
-            ),
-            LoginUseCase(
-              AuthRepositoryImpl(
-                AuthDataSourceImpl(
-                  authClient: AuthClient(Dio()),
-                ),
-                ConnectionStatusImpl(connectionChecker: InternetConnectionChecker()),
-              ),
-              DeviceInfoRepositoryImpl(DeviceInfoPlugin()),
-            ),
-          ),
-        ),
-  };
+  static Route<dynamic> onGenerateRoute(RouteSettings settings) {
+    switch (settings.name) {
+      case '/onboarding':
+        final params = settings.arguments ?? const OnboardingPageParams();
+        return MaterialPageRoute(
+          builder: (_) => appModule<OnboardingCarousel>(param1: params),
+        );
+
+      case '/login':
+        final params = settings.arguments ?? const LoginPageParams();
+        return MaterialPageRoute(
+          builder: (_) => appModule<LoginPage>(param1: params),
+        );
+
+      default:
+        return MaterialPageRoute(builder: (_) => Container());
+    }
+  }
 
   static void pop() => popWithResult(null);
 
@@ -64,11 +47,15 @@ class Navigation {
       );
 
   static Future<T?>? pushNamed<T>(
-    String routeName, {
+    String routeName,
+    PageParams pageParams, {
     arguments,
     bool fullScreenDialog = false,
   }) async =>
-      navigatorKey.currentState?.pushNamed(routeName);
+      navigatorKey.currentState?.pushNamed(
+        routeName,
+        arguments: pageParams,
+      );
 
   static Future<T?>? pushReplacement<T>(
     Widget page, {
@@ -80,11 +67,15 @@ class Navigation {
       );
 
   static Future<T?>? pushReplacementNamed<T>(
-    String routeName, {
+    String routeName,
+    PageParams pageParams, {
     arguments,
     bool fullScreenDialog = false,
   }) async =>
-      navigatorKey.currentState?.pushReplacementNamed(routeName);
+      navigatorKey.currentState?.pushReplacementNamed(
+        routeName,
+        arguments: pageParams,
+      );
 
   static Future<T?>? pushModalRoute<T>(
     Widget page, {

@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tutapp/features/login/login_page_params.dart';
 import 'package:tutapp/features/onboarding/onboarding_presentation_model.dart';
 import 'package:tutapp/navigation/navigation.dart';
 
@@ -15,5 +16,8 @@ class OnboardingPresenter extends Cubit<OnboardingViewModel> {
     if (_model.onLastItem) onTapSkip();
   }
 
-  void onTapSkip() => Navigation.pushReplacementNamed('/login');
+  void onTapSkip() => Navigation.pushReplacementNamed(
+        '/login',
+        const LoginPageParams(),
+      );
 }

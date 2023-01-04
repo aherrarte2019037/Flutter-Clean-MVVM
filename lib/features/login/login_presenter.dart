@@ -2,7 +2,6 @@ import 'dart:developer';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tutapp/domain/use_cases/login_usecase.dart';
 import 'package:tutapp/features/login/login_presentation_model.dart';
-import 'package:tutapp/navigation/navigation.dart';
 
 class LoginPresenter extends Cubit<LoginViewModel> {
   LoginPresenter(
@@ -42,7 +41,7 @@ class LoginPresenter extends Cubit<LoginViewModel> {
       );
   }
 
-  void onTapRegister() => Navigation.pushNamed('/register');
+  void onTapRegister() => {};
 
-  void onTapForgotPassword() => Navigation.pushNamed('/forgotPassword');
+  void onTapForgotPassword() => {};
 }
