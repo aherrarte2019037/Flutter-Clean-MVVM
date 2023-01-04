@@ -1,8 +1,10 @@
+import 'package:tutapp/features/login/login_page_params.dart';
 import 'package:tutapp/validators/email_validator.dart';
 import 'package:tutapp/validators/password_validator.dart';
 
 class LoginPresentationModel implements LoginViewModel {
   LoginPresentationModel.initial(
+    LoginPageParams params,
     this.emailValidator,
     this.passwordValidator,
   )   : emailValue = '',

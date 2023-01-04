@@ -1,9 +1,12 @@
 import 'package:tutapp/features/onboarding/domain/onboarding_item.dart';
+import 'package:tutapp/features/onboarding/onboarding_page_params.dart';
 import 'package:tutapp/localization/strings_manager.dart';
 import 'package:tutapp/resources/assets.gen.dart';
 
 class OnboardingPresentationModel implements OnboardingViewModel {
-  OnboardingPresentationModel.initial() : carouselIndex = 0;
+  OnboardingPresentationModel.initial(
+    OnboardingPageParams params,
+  ) : carouselIndex = params.carouselIndex;
 
   OnboardingPresentationModel._({
     required this.carouselIndex,

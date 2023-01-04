@@ -30,7 +30,9 @@ class _OnboardingCarouselState extends State<OnboardingCarousel>
 
   @override
   void initState() {
-    _pageController = PageController();
+    _pageController = PageController(
+      initialPage: state.carouselIndex,
+    );
     super.initState();
   }
 
