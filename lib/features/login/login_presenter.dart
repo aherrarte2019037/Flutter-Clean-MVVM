@@ -31,6 +31,7 @@ class LoginPresenter extends Cubit<LoginViewModel> {
     emit(_model.validateFields());
     if (!_model.enableLogin) return;
 
+    _setLoading(true);
     await _loginUseCase.execute(LoginUseCaseInput(
       email: _model.emailValue,
       password: _model.passwordValue,
@@ -39,9 +40,12 @@ class LoginPresenter extends Cubit<LoginViewModel> {
         (failure) => inspect(failure),
         (result) => inspect(result),
       );
+    _setLoading(false);
   }
 
   void onTapRegister() => {};
 
   void onTapForgotPassword() => {};
+
+  void _setLoading(bool value) => emit(_model.copyWith(isLoading: value));
 }

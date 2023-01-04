@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tutapp/ui/theme/color_theme.dart';
 import 'package:tutapp/ui/theme/font_theme.dart';
+import 'package:tutapp/utils/durations.dart';
 
 class Button extends StatelessWidget {
   const Button({
@@ -12,10 +13,13 @@ class Button extends StatelessWidget {
     this.borderRadius = _defaultBorderRadius,
     this.labelStyle,
     this.size = const ButtonSize.normal(),
+    this.isLoading = false,
   });
 
   static const _defaultBorderRadius = 16.0;
   static const _defaultFontSize = 18.0;
+  static const _circularIndicatorSize = 24.0;
+  static const _circularIndicatorWidth = 3.0;
 
   final VoidCallback onTap;
   final String label;
@@ -24,6 +28,14 @@ class Button extends StatelessWidget {
   final double borderRadius;
   final ButtonSize size;
   final Color? foregroundColor;
+  final bool isLoading;
+
+  Widget _transitionBuilder(Widget child, Animation<double> animation) {
+    return ScaleTransition(
+      scale: animation,
+      child: child,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,14 +57,27 @@ class Button extends StatelessWidget {
           ),
           backgroundColor: backgroundColor ?? ColorTheme.orange,
         ),
-        child: Text(
-          label,
-          style: labelStyle ??
-              FontTheme.body10.copyWith(
-                color: whiteColor,
-                fontWeight: FontWeight.w500,
-                fontSize: _defaultFontSize,
-              ),
+        child: AnimatedSwitcher(
+          duration: const ShortDuration(),
+          transitionBuilder: _transitionBuilder,
+          child: isLoading
+              ? SizedBox(
+                  width: _circularIndicatorSize,
+                  height: _circularIndicatorSize,
+                  child: CircularProgressIndicator(
+                    strokeWidth: _circularIndicatorWidth,
+                    color: labelStyle?.color ?? whiteColor,
+                  ),
+                )
+              : Text(
+                  label,
+                  style: labelStyle ??
+                      FontTheme.body10.copyWith(
+                        color: whiteColor,
+                        fontWeight: FontWeight.w500,
+                        fontSize: _defaultFontSize,
+                      ),
+                ),
         ),
       ),
     );

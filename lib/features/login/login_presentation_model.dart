@@ -10,7 +10,8 @@ class LoginPresentationModel implements LoginViewModel {
   )   : emailValue = '',
         passwordValue = '',
         emailValidationResult = EmailValidationResult.success,
-        passwordValidationResult = PasswordValidationResult.success;
+        passwordValidationResult = PasswordValidationResult.success,
+        isLoading = false;
 
   LoginPresentationModel._({
     required this.emailValue,
@@ -19,11 +20,15 @@ class LoginPresentationModel implements LoginViewModel {
     required this.passwordValidator,
     required this.emailValidationResult,
     required this.passwordValidationResult,
+    required this.isLoading,
   });
 
   final EmailValidator emailValidator;
 
   final PasswordValidator passwordValidator;
+
+  @override
+  final bool isLoading;
 
   @override
   final String emailValue;
@@ -58,6 +63,7 @@ class LoginPresentationModel implements LoginViewModel {
     PasswordValidator? passwordValidator,
     EmailValidationResult? emailValidationResult,
     PasswordValidationResult? passwordValidationResult,
+    bool? isLoading,
   }) {
     return LoginPresentationModel._(
       emailValue: emailValue ?? this.emailValue,
@@ -66,6 +72,7 @@ class LoginPresentationModel implements LoginViewModel {
       passwordValidator: passwordValidator ?? this.passwordValidator,
       emailValidationResult: emailValidationResult ?? this.emailValidationResult,
       passwordValidationResult: passwordValidationResult ?? this.passwordValidationResult,
+      isLoading: isLoading ?? this.isLoading,
     );
   }
 }
@@ -80,4 +87,6 @@ abstract class LoginViewModel {
   PasswordValidationResult get passwordValidationResult;
 
   bool get enableLogin;
+
+  bool get isLoading;
 }

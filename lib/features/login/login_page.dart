@@ -80,6 +80,7 @@ class _LoginPageState extends State<LoginPage> with PresenterState<LoginViewMode
                         height: _buttonHeight,
                         width: double.infinity,
                       ),
+                      isLoading: state.isLoading,
                     ),
                   ),
                   const Gap(25),
