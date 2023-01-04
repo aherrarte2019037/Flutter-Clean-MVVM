@@ -20,7 +20,7 @@ class _ApplicationState extends State<Application> {
   Widget build(BuildContext context) {
     return MaterialApp(
       navigatorKey: Navigation.navigatorKey,
-      routes: Navigation.routes,
+      onGenerateRoute: Navigation.onGenerateRoute,
       initialRoute: '/onboarding',
       debugShowCheckedModeBanner: false,
       scrollBehavior: AppThemeData.scrollBehavior,

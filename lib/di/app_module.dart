@@ -7,13 +7,17 @@ import 'package:tutapp/data/dio/dio_factory.dart';
 import 'package:tutapp/data/sources/auth_data_source.dart';
 import 'package:tutapp/data/sources/connection_status.dart';
 import 'package:tutapp/domain/repositories/auth_repository.dart';
+import 'package:tutapp/domain/repositories/device_info_repository.dart';
 import 'package:tutapp/domain/repositories/local_storage_repository.dart';
+import 'package:tutapp/features/login/di/login_module.dart' as login_module;
 import 'package:tutapp/validators/email_validator.dart';
 import 'package:tutapp/validators/password_validator.dart';
 
 final appModule = GetIt.instance;
 
 Future<void> initAppModule() async {
+  login_module.initLoginModule();
+
   _registerValidators();
   _registerDependencies();
   _registerRepositories();
@@ -34,7 +38,7 @@ void _registerDependencies() {
       checkTimeout: ConfigConstants.connectionCheckerTimeout,
     ),
   );
-  appModule.registerLazySingleton(() => DeviceInfoPlugin());
+  appModule.registerLazySingleton<DeviceInfoPlugin>(() => DeviceInfoPlugin());
 }
 
 void _registerRepositories() {
@@ -43,6 +47,9 @@ void _registerRepositories() {
   );
   appModule.registerLazySingleton<AuthRepository>(
     () => AuthRepositoryImpl(appModule<AuthDataSource>(), appModule<ConnectionStatus>()),
+  );
+  appModule.registerLazySingleton<DeviceInfoRepository>(
+    () => DeviceInfoRepositoryImpl(appModule<DeviceInfoPlugin>()),
   );
 }
 
