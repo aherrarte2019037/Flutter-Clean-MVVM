@@ -10,8 +10,8 @@ class LoginPresentationModel implements LoginViewModel {
     this.passwordValidator,
   )   : emailValue = '',
         passwordValue = '',
-        emailValidationResult = EmailValidationResult.initial,
-        passwordValidationResult = PasswordValidationResult.initial,
+        emailErrorText = '',
+        passwordErrorText = '',
         loginStatus = LoginResultStatus.initial;
 
   LoginPresentationModel._({
@@ -19,8 +19,8 @@ class LoginPresentationModel implements LoginViewModel {
     required this.passwordValue,
     required this.emailValidator,
     required this.passwordValidator,
-    required this.emailValidationResult,
-    required this.passwordValidationResult,
+    required this.emailErrorText,
+    required this.passwordErrorText,
     required this.loginStatus,
   });
 
@@ -38,13 +38,13 @@ class LoginPresentationModel implements LoginViewModel {
   final String passwordValue;
 
   @override
-  final EmailValidationResult emailValidationResult;
+  final String emailErrorText;
 
   @override
-  final PasswordValidationResult passwordValidationResult;
+  final String passwordErrorText;
 
   @override
-  bool get enableLogin => emailValidationResult.isSuccess && passwordValidationResult.isSuccess;
+  bool get enableLogin => validateEmail(emailValue).isSuccess && validatePassword(passwordValue).isSuccess;
 
   EmailValidationResult validateEmail(String value) => emailValidator.validate(value);
 
@@ -52,8 +52,8 @@ class LoginPresentationModel implements LoginViewModel {
 
   LoginViewModel validateFields() {
     return copyWith(
-      emailValidationResult: emailValidator.validate(emailValue),
-      passwordValidationResult: passwordValidator.validate(passwordValue),
+      emailErrorText: emailValidator.validate(emailValue).message,
+      passwordErrorText: passwordValidator.validate(passwordValue).message,
     );
   }
 
@@ -62,8 +62,8 @@ class LoginPresentationModel implements LoginViewModel {
     String? passwordValue,
     EmailValidator? emailValidator,
     PasswordValidator? passwordValidator,
-    EmailValidationResult? emailValidationResult,
-    PasswordValidationResult? passwordValidationResult,
+    String? emailErrorText,
+    String? passwordErrorText,
     LoginResultStatus? loginStatus,
   }) {
     return LoginPresentationModel._(
@@ -71,8 +71,8 @@ class LoginPresentationModel implements LoginViewModel {
       passwordValue: passwordValue ?? this.passwordValue,
       emailValidator: emailValidator ?? this.emailValidator,
       passwordValidator: passwordValidator ?? this.passwordValidator,
-      emailValidationResult: emailValidationResult ?? this.emailValidationResult,
-      passwordValidationResult: passwordValidationResult ?? this.passwordValidationResult,
+      emailErrorText: emailErrorText ?? this.emailErrorText,
+      passwordErrorText: passwordErrorText ?? this.passwordErrorText,
       loginStatus: loginStatus ?? this.loginStatus,
     );
   }
@@ -81,11 +81,11 @@ class LoginPresentationModel implements LoginViewModel {
 abstract class LoginViewModel {
   String get emailValue;
 
-  EmailValidationResult get emailValidationResult;
+  String get emailErrorText;
 
   String get passwordValue;
 
-  PasswordValidationResult get passwordValidationResult;
+  String get passwordErrorText;
 
   bool get enableLogin;
 

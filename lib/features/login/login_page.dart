@@ -55,7 +55,7 @@ class _LoginPageState extends State<LoginPage> with PresenterState<LoginViewMode
                     child: TextInput(
                       onChanged: presenter.onEmailValueChanged,
                       initialValue: state.emailValue,
-                      errorText: state.emailValidationResult.message,
+                      errorText: state.emailErrorText,
                       hintText: StringsManager.loginEmailFieldHint,
                       keyboardType: TextInputType.emailAddress,
                     ),
@@ -66,7 +66,7 @@ class _LoginPageState extends State<LoginPage> with PresenterState<LoginViewMode
                     child: TextInput.secret(
                       onChanged: presenter.onPasswordValueChanged,
                       initialValue: state.passwordValue,
-                      errorText: state.passwordValidationResult.message,
+                      errorText: state.passwordErrorText,
                       hintText: StringsManager.loginPasswordFieldHint,
                     ),
                   ),

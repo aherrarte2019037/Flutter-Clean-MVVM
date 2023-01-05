@@ -17,14 +17,14 @@ class LoginPresenter extends Cubit<LoginViewModel> {
   void onEmailValueChanged(String value) {
     emit(_model.copyWith(
       emailValue: value,
-      emailValidationResult: _model.validateEmail(value),
+      emailErrorText: _model.validateEmail(value).message,
     ));
   }
 
   void onPasswordValueChanged(String value) {
     emit(_model.copyWith(
       passwordValue: value,
-      passwordValidationResult: _model.validatePassword(value),
+      passwordErrorText: _model.validatePassword(value).message,
     ));
   }
 

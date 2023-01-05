@@ -18,7 +18,6 @@ class EmailValidator implements ValueValidator {
 }
 
 enum EmailValidationResult implements ValidationResult {
-  initial(),
   success(),
   emptyField(message: StringsManager.emptyFieldError),
   invalid(message: StringsManager.invalidEmailError);

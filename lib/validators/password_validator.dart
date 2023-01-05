@@ -16,7 +16,6 @@ class PasswordValidator implements ValueValidator {
 }
 
 enum PasswordValidationResult implements ValidationResult {
-  initial(),
   success(),
   emptyField(message: StringsManager.emptyFieldError),
   tooShort(message: StringsManager.tooShortFieldError);
