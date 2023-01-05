@@ -10,7 +10,7 @@ class EmailValidator implements ValueValidator {
   EmailValidationResult validate(String value) {
     value = value.trim();
 
-    if (value.isEmpty) return EmailValidationResult.empty;
+    if (value.isEmpty) return EmailValidationResult.emptyField;
     if (!pattern.hasMatch(value)) return EmailValidationResult.invalid;
 
     return EmailValidationResult.success;
@@ -18,11 +18,12 @@ class EmailValidator implements ValueValidator {
 }
 
 enum EmailValidationResult implements ValidationResult {
-  success(''),
-  empty(StringsManager.emptyFieldError),
-  invalid(StringsManager.invalidEmailError);
+  initial(),
+  success(),
+  emptyField(message: StringsManager.emptyFieldError),
+  invalid(message: StringsManager.invalidEmailError);
 
-  const EmailValidationResult(this.message);
+  const EmailValidationResult({this.message = ''});
 
   final String message;
 

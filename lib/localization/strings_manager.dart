@@ -2,7 +2,7 @@ class StringsManager {
   const StringsManager._();
 
   static const appTitle = 'TutApp';
-  
+
   //Onboarding
   static const onboardingTitle1 = 'AWESOME TITLE #1';
   static const onboardingTitle2 = 'AWESOME TITLE #2';
@@ -21,4 +21,5 @@ class StringsManager {
   static const emptyFieldError = 'Required field';
   static const invalidEmailError = 'Invalid email address';
   static const tooShortFieldError = 'Minimum 8 characters';
+  static const wrongPasswordError = 'Wrong password';
 }

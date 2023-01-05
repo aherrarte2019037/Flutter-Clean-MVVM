@@ -8,7 +8,7 @@ class PasswordValidator implements ValueValidator {
   PasswordValidationResult validate(String value) {
     value = value.trim();
 
-    if (value.isEmpty) return PasswordValidationResult.empty;
+    if (value.isEmpty) return PasswordValidationResult.emptyField;
     if (value.length < _minimumlength) return PasswordValidationResult.tooShort;
 
     return PasswordValidationResult.success;
@@ -16,12 +16,12 @@ class PasswordValidator implements ValueValidator {
 }
 
 enum PasswordValidationResult implements ValidationResult {
-  success(''),
-  empty(StringsManager.emptyFieldError),
-  tooShort(StringsManager.tooShortFieldError);
+  initial(),
+  success(),
+  emptyField(message: StringsManager.emptyFieldError),
+  tooShort(message: StringsManager.tooShortFieldError);
 
-
-  const PasswordValidationResult(this.message);
+  const PasswordValidationResult({this.message = ''});
 
   final String message;
 

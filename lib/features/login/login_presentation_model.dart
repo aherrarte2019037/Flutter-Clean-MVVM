@@ -1,3 +1,4 @@
+import 'package:tutapp/features/login/domain/login_result_status.dart';
 import 'package:tutapp/features/login/login_page_params.dart';
 import 'package:tutapp/validators/email_validator.dart';
 import 'package:tutapp/validators/password_validator.dart';
@@ -9,9 +10,9 @@ class LoginPresentationModel implements LoginViewModel {
     this.passwordValidator,
   )   : emailValue = '',
         passwordValue = '',
-        emailValidationResult = EmailValidationResult.success,
-        passwordValidationResult = PasswordValidationResult.success,
-        isLoading = false;
+        emailValidationResult = EmailValidationResult.initial,
+        passwordValidationResult = PasswordValidationResult.initial,
+        loginStatus = LoginResultStatus.initial;
 
   LoginPresentationModel._({
     required this.emailValue,
@@ -20,7 +21,7 @@ class LoginPresentationModel implements LoginViewModel {
     required this.passwordValidator,
     required this.emailValidationResult,
     required this.passwordValidationResult,
-    required this.isLoading,
+    required this.loginStatus,
   });
 
   final EmailValidator emailValidator;
@@ -28,7 +29,7 @@ class LoginPresentationModel implements LoginViewModel {
   final PasswordValidator passwordValidator;
 
   @override
-  final bool isLoading;
+  final LoginResultStatus loginStatus;
 
   @override
   final String emailValue;
@@ -63,7 +64,7 @@ class LoginPresentationModel implements LoginViewModel {
     PasswordValidator? passwordValidator,
     EmailValidationResult? emailValidationResult,
     PasswordValidationResult? passwordValidationResult,
-    bool? isLoading,
+    LoginResultStatus? loginStatus,
   }) {
     return LoginPresentationModel._(
       emailValue: emailValue ?? this.emailValue,
@@ -72,7 +73,7 @@ class LoginPresentationModel implements LoginViewModel {
       passwordValidator: passwordValidator ?? this.passwordValidator,
       emailValidationResult: emailValidationResult ?? this.emailValidationResult,
       passwordValidationResult: passwordValidationResult ?? this.passwordValidationResult,
-      isLoading: isLoading ?? this.isLoading,
+      loginStatus: loginStatus ?? this.loginStatus,
     );
   }
 }
@@ -88,5 +89,5 @@ abstract class LoginViewModel {
 
   bool get enableLogin;
 
-  bool get isLoading;
+  LoginResultStatus get loginStatus;
 }
