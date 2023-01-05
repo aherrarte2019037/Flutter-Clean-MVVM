@@ -5,24 +5,24 @@ class PasswordValidator implements ValueValidator {
   static const _minimumlength = 8;
 
   @override
-  PasswordValidationResult validate(String value) {
+  PasswordValidatorResult validate(String value) {
     value = value.trim();
 
-    if (value.isEmpty) return PasswordValidationResult.emptyField;
-    if (value.length < _minimumlength) return PasswordValidationResult.tooShort;
+    if (value.isEmpty) return PasswordValidatorResult.emptyField;
+    if (value.length < _minimumlength) return PasswordValidatorResult.tooShort;
 
-    return PasswordValidationResult.success;
+    return PasswordValidatorResult.success;
   }
 }
 
-enum PasswordValidationResult implements ValidationResult {
+enum PasswordValidatorResult implements ValidationResult {
   success(),
   emptyField(message: StringsManager.emptyFieldError),
   tooShort(message: StringsManager.tooShortFieldError);
 
-  const PasswordValidationResult({this.message = ''});
+  const PasswordValidatorResult({this.message = ''});
 
   final String message;
 
-  bool get isSuccess => this == PasswordValidationResult.success;
+  bool get isSuccess => this == PasswordValidatorResult.success;
 }

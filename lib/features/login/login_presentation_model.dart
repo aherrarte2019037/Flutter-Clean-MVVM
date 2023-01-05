@@ -46,9 +46,9 @@ class LoginPresentationModel implements LoginViewModel {
   @override
   bool get enableLogin => validateEmail(emailValue).isSuccess && validatePassword(passwordValue).isSuccess;
 
-  EmailValidationResult validateEmail(String value) => emailValidator.validate(value);
+  EmailValidatorResult validateEmail(String value) => emailValidator.validate(value);
 
-  PasswordValidationResult validatePassword(String value) => passwordValidator.validate(value);
+  PasswordValidatorResult validatePassword(String value) => passwordValidator.validate(value);
 
   LoginViewModel validateFields() {
     return copyWith(

@@ -7,24 +7,24 @@ class EmailValidator implements ValueValidator {
   );
 
   @override
-  EmailValidationResult validate(String value) {
+  EmailValidatorResult validate(String value) {
     value = value.trim();
 
-    if (value.isEmpty) return EmailValidationResult.emptyField;
-    if (!pattern.hasMatch(value)) return EmailValidationResult.invalid;
+    if (value.isEmpty) return EmailValidatorResult.emptyField;
+    if (!pattern.hasMatch(value)) return EmailValidatorResult.invalid;
 
-    return EmailValidationResult.success;
+    return EmailValidatorResult.success;
   }
 }
 
-enum EmailValidationResult implements ValidationResult {
+enum EmailValidatorResult implements ValidationResult {
   success(),
   emptyField(message: StringsManager.emptyFieldError),
   invalid(message: StringsManager.invalidEmailError);
 
-  const EmailValidationResult({this.message = ''});
+  const EmailValidatorResult({this.message = ''});
 
   final String message;
 
-  bool get isSuccess => this == EmailValidationResult.success;
+  bool get isSuccess => this == EmailValidatorResult.success;
 }
