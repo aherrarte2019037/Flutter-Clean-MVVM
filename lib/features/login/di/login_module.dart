@@ -1,6 +1,7 @@
 import 'package:tutapp/di/app_module.dart';
 import 'package:tutapp/domain/repositories/auth_repository.dart';
 import 'package:tutapp/domain/repositories/device_info_repository.dart';
+import 'package:tutapp/domain/repositories/local_storage_repository.dart';
 import 'package:tutapp/domain/use_cases/login_usecase.dart';
 import 'package:tutapp/features/login/login_page.dart';
 import 'package:tutapp/features/login/login_page_params.dart';
@@ -55,6 +56,7 @@ void _registerPresenters() {
   appModule.registerFactoryParam<OnboardingPresenter, OnboardingPageParams, dynamic>(
     (pageParams, _) => OnboardingPresenter(
       appModule<OnboardingPresentationModel>(param1: pageParams),
+      appModule<LocalStorageRepository>(),
     ),
   );
 }

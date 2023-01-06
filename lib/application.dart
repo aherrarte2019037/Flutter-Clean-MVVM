@@ -5,11 +5,7 @@ import 'package:tutapp/navigation/navigation.dart';
 import 'ui/theme/app_theme_data.dart';
 
 class Application extends StatefulWidget {
-  const Application._(); // Private constructor
-
-  static const Application _instance = Application._(); // Singleton pattern
-
-  factory Application() => _instance; // Factory for singleton instance
+  const Application({super.key});
 
   @override
   State<Application> createState() => _ApplicationState();

@@ -1,15 +1,23 @@
+import 'package:json_annotation/json_annotation.dart';
+part 'locales.g.dart';
+
+@JsonEnum(alwaysCreate: true, valueField: 'languageCode')
 enum Locales {
-  enUS(languageCode: 'en', regionCode: 'US'),
-  esES(languageCode: 'es', regionCode: 'ES');
+  en(languageCode: 'en'),
+  es(languageCode: 'es');
 
   const Locales({
     required this.languageCode,
-    required this.regionCode,
   });
 
   final String languageCode;
-  final String regionCode;
 
-  @override
-  String toString() => '${languageCode}_$regionCode';
+  String toJson() => _$LocalesEnumMap[this]!;
+
+  factory Locales.fromJson(String json) => _$LocalesEnumMap.entries
+      .firstWhere(
+        (element) => element.value == json,
+        orElse: () => MapEntry(Locales.en, Locales.en.languageCode),
+      )
+      .key;
 }

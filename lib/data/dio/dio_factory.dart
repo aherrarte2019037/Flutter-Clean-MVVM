@@ -18,7 +18,8 @@ class DioFactory {
     final dio = Dio();
     final userLocale = await _localStorageRepository.read<Locales>(
       key: LocalStorageKey.userLocale,
-      defaultValue: Locales.enUS,
+      defaultValue: Locales.en,
+      enumDecoder: Locales.fromJson,
     );
 
     dio.options = ConnectionOptions(

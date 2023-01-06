@@ -1,5 +1,6 @@
 enum LocalStorageKey {
-  userLocale('userLocale');
+  userLocale('userLocale'),
+  skipOnboarding('skipOnboarding');
 
   const LocalStorageKey(this.value);
 
