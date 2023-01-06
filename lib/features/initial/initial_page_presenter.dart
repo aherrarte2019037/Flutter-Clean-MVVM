@@ -20,9 +20,15 @@ class InitialPagePresenter extends Cubit<InitialPageViewModel> {
     final skippedOnboarding = (await _appInitUseCase.execute()).skipOnboarding;
 
     if (skippedOnboarding) {
-      Navigation.pushReplacementNamed('/initialLogin', const LoginPageParams());
+      Navigation.pushReplacementNamed(
+        '/login',
+        const LoginPageParams(swipeAnimate: false),
+      );
     } else {
-      Navigation.pushReplacementNamed('/onboarding', const OnboardingPageParams());
+      Navigation.pushReplacementNamed(
+        '/onboarding',
+        const OnboardingPageParams(),
+      );
     }
   }
 }

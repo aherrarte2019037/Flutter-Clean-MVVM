@@ -17,21 +17,17 @@ class Navigation {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case '/onboarding':
-        final params = settings.arguments ?? const OnboardingPageParams();
-        return _noAnimationRoute(appModule<OnboardingCarousel>(param1: params));
-
-      case '/initialLogin':
-        final params = settings.arguments ?? const LoginPageParams();
-        return _noAnimationRoute(appModule<LoginPage>(param1: params));
+        final params = settings.arguments as OnboardingPageParams? ?? const OnboardingPageParams();
+        final page = appModule<OnboardingCarousel>(param1: params);
+        return _noAnimationRoute(page);
 
       case '/login':
-        final params = settings.arguments ?? const LoginPageParams();
-        return MaterialPageRoute(
-          builder: (_) => appModule<LoginPage>(param1: params),
-        );
+        final params = settings.arguments as LoginPageParams? ?? const LoginPageParams();
+        final page = appModule<LoginPage>(param1: params);
+        return params.swipeAnimate ? _materialRoute(page) : _noAnimationRoute(page);
 
       default:
-        return MaterialPageRoute(builder: (_) => Container());
+        return _materialRoute(const SizedBox.shrink());
     }
   }
 
@@ -109,7 +105,7 @@ RoutePageBuilder _pageBuilder(Widget page) => (
 
 Route<T> _materialRoute<T>(
   Widget page, {
-  required bool fullscreenDialog,
+  bool fullscreenDialog = false,
   PageParams? params,
 }) =>
     MaterialPageRoute(
