@@ -3,7 +3,6 @@ enum LoginResultStatus {
   loading,
   wrongPassword,
   notRegistered,
-  fullFilled,
   error,
   success;
 

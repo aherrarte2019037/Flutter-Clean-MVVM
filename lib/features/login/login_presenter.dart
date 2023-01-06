@@ -28,7 +28,7 @@ class LoginPresenter extends Cubit<LoginViewModel> {
     ));
   }
 
-  Future<void> onTapLogin() async {
+  void onTapLogin() async {
     emit(_model.validateFields());
     if (!_model.enableLogin) return;
 
@@ -39,9 +39,10 @@ class LoginPresenter extends Cubit<LoginViewModel> {
     ))
       ..fold(
         (failure) => inspect(failure),
-        (result) => inspect(result),
+        (result) {
+          emit(_model.copyWith(loginStatus: LoginResultStatus.success));
+        },
       );
-    emit(_model.copyWith(loginStatus: LoginResultStatus.fullFilled));
   }
 
   void onTapRegister() => {};
