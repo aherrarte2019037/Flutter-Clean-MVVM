@@ -10,6 +10,7 @@ class BlurredBackground extends StatelessWidget {
     this.opacity = _defaultOpacity,
     this.backgroundColor,
     this.isDismissible = true,
+    this.blurred = true,
   }) : super(key: key);
 
   static const _defaultOpacity = 0.5;
@@ -20,6 +21,7 @@ class BlurredBackground extends StatelessWidget {
   final double opacity;
   final Color? backgroundColor;
   final bool isDismissible;
+  final bool blurred;
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +30,8 @@ class BlurredBackground extends StatelessWidget {
         Positioned.fill(
           child: BackdropFilter(
             filter: ImageFilter.blur(
-              sigmaX: blurRadius,
-              sigmaY: blurRadius,
+              sigmaX: blurred ? blurRadius : 0,
+              sigmaY: blurred ? blurRadius : 0,
             ),
             child: GestureDetector(
               onTap: isDismissible ? () => Navigation.pop() : null,

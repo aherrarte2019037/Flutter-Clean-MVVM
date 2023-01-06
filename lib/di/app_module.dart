@@ -10,13 +10,17 @@ import 'package:tutapp/domain/repositories/auth_repository.dart';
 import 'package:tutapp/domain/repositories/device_info_repository.dart';
 import 'package:tutapp/domain/repositories/local_storage_repository.dart';
 import 'package:tutapp/features/login/di/login_module.dart' as login_module;
+import 'package:tutapp/features/onboarding/di/onboarding_module.dart' as onboarding_module;
 import 'package:tutapp/validators/email_validator.dart';
 import 'package:tutapp/validators/password_validator.dart';
+import 'package:tutapp/features/initial/di/initial_module.dart' as initial_module;
 
 final appModule = GetIt.instance;
 
 Future<void> initAppModule() async {
-  login_module.initLoginModule();
+  onboarding_module.initModule();
+  initial_module.initModule();
+  login_module.initModule();
 
   _registerValidators();
   _registerDependencies();

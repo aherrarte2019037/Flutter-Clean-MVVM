@@ -18,9 +18,11 @@ class Navigation {
     switch (settings.name) {
       case '/onboarding':
         final params = settings.arguments ?? const OnboardingPageParams();
-        return MaterialPageRoute(
-          builder: (_) => appModule<OnboardingCarousel>(param1: params),
-        );
+        return _noAnimationRoute(appModule<OnboardingCarousel>(param1: params));
+
+      case '/initialLogin':
+        final params = settings.arguments ?? const LoginPageParams();
+        return _noAnimationRoute(appModule<LoginPage>(param1: params));
 
       case '/login':
         final params = settings.arguments ?? const LoginPageParams();
@@ -39,42 +41,48 @@ class Navigation {
 
   static Future<T?>? push<T>(
     Widget page, {
-    arguments,
+    PageParams? params,
     bool fullScreenDialog = false,
   }) async =>
       navigatorKey.currentState?.push(
-        _materialRoute(page, fullscreenDialog: fullScreenDialog),
+        _materialRoute(
+          page,
+          fullscreenDialog: fullScreenDialog,
+          params: params,
+        ),
       );
 
   static Future<T?>? pushNamed<T>(
     String routeName,
-    PageParams pageParams, {
-    arguments,
+    PageParams params, {
     bool fullScreenDialog = false,
   }) async =>
       navigatorKey.currentState?.pushNamed(
         routeName,
-        arguments: pageParams,
+        arguments: params,
       );
 
   static Future<T?>? pushReplacement<T>(
     Widget page, {
-    arguments,
+    PageParams? params,
     bool fullScreenDialog = false,
   }) async =>
       navigatorKey.currentState?.pushReplacement(
-        _materialRoute(page, fullscreenDialog: fullScreenDialog),
+        _materialRoute(
+          page,
+          fullscreenDialog: fullScreenDialog,
+          params: params,
+        ),
       );
 
   static Future<T?>? pushReplacementNamed<T>(
     String routeName,
-    PageParams pageParams, {
-    arguments,
+    PageParams params, {
     bool fullScreenDialog = false,
   }) async =>
       navigatorKey.currentState?.pushReplacementNamed(
         routeName,
-        arguments: pageParams,
+        arguments: params,
       );
 
   static Future<T?>? pushModalRoute<T>(
@@ -102,8 +110,10 @@ RoutePageBuilder _pageBuilder(Widget page) => (
 Route<T> _materialRoute<T>(
   Widget page, {
   required bool fullscreenDialog,
+  PageParams? params,
 }) =>
     MaterialPageRoute(
+      settings: RouteSettings(arguments: params),
       builder: (context) => page,
       fullscreenDialog: fullscreenDialog,
     );
@@ -125,4 +135,10 @@ Route<T> _fadeInRoute<T>(
       pageBuilder: _pageBuilder(page),
       transitionsBuilder: fadeInPageTransition(fadeOut: fadeOut),
       fullscreenDialog: fullScreenDialog,
+    );
+
+Route<T> _noAnimationRoute<T>(Widget page) => PageRouteBuilder<T>(
+      transitionDuration: Duration.zero,
+      pageBuilder: _pageBuilder(page),
+      reverseTransitionDuration: Duration.zero,
     );

@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:tutapp/domain/models/local_storage_key.dart';
@@ -43,7 +42,6 @@ class LocalStorageRepositoryImpl implements LocalStorageRepository {
     if (enumDecoder != null) {
       return enumDecoder(decoded);
     }
-    inspect(T is Enum);
     T result = decoded;
     return result;
   }
