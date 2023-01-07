@@ -1,7 +1,9 @@
 import 'package:dio/dio.dart';
+import 'package:tutapp/domain/models/visible_failure.dart';
+import 'package:tutapp/localization/strings_manager.dart';
 
 //ignore_for_file: no-magic-number
-class Failure {
+class Failure implements DisplayVisibleFailure {
   Failure.handle(Object error) {
     type = error is DioError ? _handleNetworkError(error) : FailureType.unknown;
   }
@@ -9,6 +11,63 @@ class Failure {
   Failure.notConnected() : type = FailureType.notConnected;
 
   late final FailureType type;
+
+  @override
+  // ignore: long-method
+  VisibleFailure get visible {
+    switch (type) {
+      case FailureType.noContent:
+        return VisibleFailure(
+          message: StringsManager.noContentNetworkError,
+        );
+      case FailureType.badRequest:
+        return VisibleFailure(
+          message: StringsManager.badRequestNetworkError,
+        );
+      case FailureType.forbidden:
+        return VisibleFailure(
+          message: StringsManager.forbiddenNetworkError,
+        );
+      case FailureType.unauthorized:
+        return VisibleFailure(
+          message: StringsManager.unauthorizedNetworkError,
+        );
+      case FailureType.notFound:
+        return VisibleFailure(
+          message: StringsManager.notFoundNetworkError,
+        );
+      case FailureType.serverError:
+        return VisibleFailure(
+          message: StringsManager.serverErrorNetworkError,
+        );
+      case FailureType.connectTimeout:
+        return VisibleFailure(
+          message: StringsManager.connectTimeoutNetworkError,
+        );
+      case FailureType.cancel:
+        return VisibleFailure(
+          message: StringsManager.cancelNetworkError,
+        );
+      case FailureType.receiveTimeout:
+        return VisibleFailure(
+          message: StringsManager.receiveTimeoutNetworkError,
+        );
+      case FailureType.sendTimeout:
+        return VisibleFailure(
+          message: StringsManager.sendTimeoutNetworkError,
+        );
+      case FailureType.cacheError:
+        return VisibleFailure(
+          message: StringsManager.cacheErrorNetworkError,
+        );
+      case FailureType.notConnected:
+        return VisibleFailure(
+          message: StringsManager.notConnectedNetworkError,
+        );
+      case FailureType.unknown:
+        return VisibleFailure.unknown();
+    }
+  }
 
   FailureType _handleNetworkError(DioError error) {
     switch (error.type) {
@@ -42,23 +101,17 @@ class Failure {
 }
 
 enum FailureType {
-  success(200, 'Success'),
-  noContent(201, 'Success with no content'),
-  badRequest(400, 'Bad request, try again later'),
-  forbidden(403, 'Forbidden request, try again later'),
-  unauthorized(401, 'Unauthorized request, try again later'),
-  notFound(404, 'Destination not found, try again later'),
-  serverError(500, 'Server error, try again later'),
-  connectTimeout(600, 'Connection timeout, , try again later'),
-  cancel(601, 'Request cancelled, , try again later'),
-  receiveTimeout(602, 'Receive timeout, , try again later'),
-  sendTimeout(603, 'Send timeout, try again later'),
-  cacheError(604, 'Cache error, try again later'),
-  notConnected(605, 'Check your internet connection'),
-  unknown(999, 'Unknown error');
-
-  const FailureType(this.code, this.message);
-
-  final int code;
-  final String message;
+  noContent,
+  badRequest,
+  forbidden,
+  unauthorized,
+  notFound,
+  serverError,
+  connectTimeout,
+  cancel,
+  receiveTimeout,
+  sendTimeout,
+  cacheError,
+  notConnected,
+  unknown;
 }

@@ -29,6 +29,13 @@ class _LoginPageState extends State<LoginPage> with PresenterState<LoginViewMode
   static const _horizontalPadding = EdgeInsets.symmetric(horizontal: 35);
   static const _buttonHeight = 55.0;
 
+  final _passwordController = TextEditingController();
+
+  Future<void> _onTapLogin() async {
+    await presenter.onTapLogin();
+    if (state.passwordValue.isEmpty) _passwordController.clear();
+  }
+
   @override
   Widget build(BuildContext context) {
     final tappableTextStyle = FontTheme.caption10.copyWith(
@@ -64,8 +71,8 @@ class _LoginPageState extends State<LoginPage> with PresenterState<LoginViewMode
                   Padding(
                     padding: _horizontalPadding,
                     child: TextInput.secret(
+                      controller: _passwordController,
                       onChanged: presenter.onPasswordValueChanged,
-                      initialValue: state.passwordValue,
                       errorText: state.passwordErrorText,
                       hintText: StringsManager.loginPasswordFieldHint,
                     ),
@@ -74,13 +81,13 @@ class _LoginPageState extends State<LoginPage> with PresenterState<LoginViewMode
                   Padding(
                     padding: _horizontalPadding,
                     child: Button(
-                      onTap: presenter.onTapLogin,
+                      onTap: _onTapLogin,
                       label: StringsManager.loginButtonLabel,
                       size: ButtonSize.fixed(
                         height: _buttonHeight,
                         width: double.infinity,
                       ),
-                      isLoading: state.loginStatus.isLoading,
+                      isLoading: state.isLoading,
                     ),
                   ),
                   const Gap(25),

@@ -13,7 +13,7 @@ class _AuthClient implements AuthClient {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://63b49b3e0f49ecf5088fa3f5.mockapi.io/api/v1/auth/';
+    baseUrl ??= 'https://flutter-clean.free.beeceptor.com/';
   }
 
   final Dio _dio;

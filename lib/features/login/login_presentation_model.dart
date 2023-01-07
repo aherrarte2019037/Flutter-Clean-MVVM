@@ -1,4 +1,3 @@
-import 'package:tutapp/features/login/domain/login_result_status.dart';
 import 'package:tutapp/features/login/login_page_params.dart';
 import 'package:tutapp/validators/email_validator.dart';
 import 'package:tutapp/validators/password_validator.dart';
@@ -12,7 +11,7 @@ class LoginPresentationModel implements LoginViewModel {
         passwordValue = '',
         emailErrorText = '',
         passwordErrorText = '',
-        loginStatus = LoginResultStatus.initial;
+        isLoading = false;
 
   LoginPresentationModel._({
     required this.emailValue,
@@ -21,7 +20,7 @@ class LoginPresentationModel implements LoginViewModel {
     required this.passwordValidator,
     required this.emailErrorText,
     required this.passwordErrorText,
-    required this.loginStatus,
+    required this.isLoading,
   });
 
   final EmailValidator emailValidator;
@@ -29,7 +28,7 @@ class LoginPresentationModel implements LoginViewModel {
   final PasswordValidator passwordValidator;
 
   @override
-  final LoginResultStatus loginStatus;
+  final bool isLoading;
 
   @override
   final String emailValue;
@@ -64,7 +63,7 @@ class LoginPresentationModel implements LoginViewModel {
     PasswordValidator? passwordValidator,
     String? emailErrorText,
     String? passwordErrorText,
-    LoginResultStatus? loginStatus,
+    bool? isLoading,
   }) {
     return LoginPresentationModel._(
       emailValue: emailValue ?? this.emailValue,
@@ -73,7 +72,7 @@ class LoginPresentationModel implements LoginViewModel {
       passwordValidator: passwordValidator ?? this.passwordValidator,
       emailErrorText: emailErrorText ?? this.emailErrorText,
       passwordErrorText: passwordErrorText ?? this.passwordErrorText,
-      loginStatus: loginStatus ?? this.loginStatus,
+      isLoading: isLoading ?? this.isLoading,
     );
   }
 }
@@ -89,5 +88,5 @@ abstract class LoginViewModel {
 
   bool get enableLogin;
 
-  LoginResultStatus get loginStatus;
+  bool get isLoading;
 }

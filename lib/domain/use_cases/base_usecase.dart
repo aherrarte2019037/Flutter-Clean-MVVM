@@ -1,10 +1,9 @@
 import 'package:dartz/dartz.dart';
-import 'package:tutapp/domain/models/failure.dart';
 
 abstract class BaseUseCase<In, Out> {
-  Future<Either<Failure,Out>> execute(In input);
+  Future<Either<dynamic,Out>> execute(In input);
 }
 
 abstract class BaseUseCaseOut<Out> {
-  Future<Either<Failure, Out>> execute();
+  Future<Either<dynamic, Out>> execute();
 }

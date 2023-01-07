@@ -18,8 +18,26 @@ class StringsManager {
   static const loginForgotPasswordLabel = 'Forgot password';
   static const loginRegisterLabel = 'Not a member? Sign up';
   static const loginButtonLabel = 'Login';
+  static const commonErrorTitle = 'Error';
+  static const unknownErrorTitle = 'Unknown error';
+  static const unknownErrorMessage = 'Unexpected error, try again';
   static const emptyFieldError = 'Required field';
   static const invalidEmailError = 'Invalid email address';
   static const tooShortFieldError = 'Minimum 8 characters';
-  static const wrongPasswordError = 'Wrong password';
+  static const wrongPasswordError = 'Incorrect password';
+  static const notRegisteredError = 'Email not registered';
+
+  static const noContentNetworkError = 'Success with no content';
+  static const badRequestNetworkError = 'Bad request, try again later';
+  static const forbiddenNetworkError = 'Forbidden request, try again later';
+  static const unauthorizedNetworkError = 'Unauthorized request, try again later';
+  static const notFoundNetworkError = 'Destination not found, try again later';
+  static const serverErrorNetworkError = 'Server error, try again later';
+  static const connectTimeoutNetworkError = 'Connection timeout, , try again later';
+  static const cancelNetworkError = 'Request cancelled, , try again later';
+  static const receiveTimeoutNetworkError = 'Receive timeout, , try again later';
+  static const sendTimeoutNetworkError = 'Send timeout, try again later';
+  static const cacheErrorNetworkError = 'Cache error, try again later';
+  static const notConnectedNetworkError = 'Check your internet connection';
+  static const unknownNetworkError = 'Unknown error';
 }

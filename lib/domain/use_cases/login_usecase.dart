@@ -1,10 +1,10 @@
-import 'package:tutapp/domain/models/failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:tutapp/domain/models/login_params.dart';
 import 'package:tutapp/domain/models/login_result.dart';
 import 'package:tutapp/domain/repositories/auth_repository.dart';
 import 'package:tutapp/domain/repositories/device_info_repository.dart';
 import 'package:tutapp/domain/use_cases/base_usecase.dart';
+import 'package:tutapp/features/login/domain/login_failure.dart';
 
 class LoginUseCase implements BaseUseCase<LoginUseCaseInput, LoginResult> {
   LoginUseCase(
@@ -16,7 +16,7 @@ class LoginUseCase implements BaseUseCase<LoginUseCaseInput, LoginResult> {
   final DeviceInfoRepository _deviceInfoRepository;
 
   @override
-  Future<Either<Failure, LoginResult>> execute(
+  Future<Either<LoginFailure, LoginResult>> execute(
     LoginUseCaseInput input,
   ) async {
     final deviceInfo = await _deviceInfoRepository.getInfo();

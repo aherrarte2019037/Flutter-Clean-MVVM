@@ -14,6 +14,7 @@ class TextInput extends StatelessWidget {
     this.hintText,
     this.enableSuggestions,
     this.autoCorrect,
+    this.controller,
   });
 
   const TextInput.secret({
@@ -24,6 +25,7 @@ class TextInput extends StatelessWidget {
     this.keyboardType,
     this.onChanged,
     this.hintText,
+    this.controller,
   })  : autoCorrect = false,
         enableSuggestions = false,
         obscureText = true;
@@ -37,6 +39,7 @@ class TextInput extends StatelessWidget {
   final bool? enableSuggestions;
   final bool? autoCorrect;
   final ValueChanged<String>? onChanged;
+  final TextEditingController? controller;
 
   bool get showError => errorText.isNotEmpty && enabled;
 
@@ -68,6 +71,7 @@ class TextInput extends StatelessWidget {
       children: [
         TextFormField(
           onChanged: onChanged,
+          controller: controller,
           decoration: InputDecoration(
             focusedBorder: inputBorder,
             enabledBorder: inputBorder,
@@ -79,7 +83,7 @@ class TextInput extends StatelessWidget {
             fillColor: ColorTheme.blackWhite.shade100,
             contentPadding: const EdgeInsets.all(20),
           ),
-          initialValue: initialValue,
+          initialValue: controller == null ? initialValue : null,
           keyboardType: keyboardType,
           enabled: enabled,
           obscureText: obscureText,

@@ -10,6 +10,7 @@ class ConnectionOptions extends BaseOptions {
 
     super.connectTimeout = durationTimeout;
     super.receiveTimeout = durationTimeout;
+    super.validateStatus = (status) => true;
     super.headers = {
       'content-type': 'application/json',
       'accept': 'application/json',

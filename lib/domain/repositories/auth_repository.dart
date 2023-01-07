@@ -1,13 +1,13 @@
 import 'package:dartz/dartz.dart';
 import 'package:tutapp/data/sources/connection_status.dart';
 import 'package:tutapp/data/sources/auth_data_source.dart';
-import 'package:tutapp/domain/models/failure.dart';
 import 'package:tutapp/domain/models/login_params.dart';
 import 'package:tutapp/domain/models/login_result.dart';
+import 'package:tutapp/features/login/domain/login_failure.dart';
 import 'package:tutapp/utils/extensions/either_extension.dart';
 
 abstract class AuthRepository {
-  Future<Either<Failure, LoginResult>> login({
+  Future<Either<LoginFailure, LoginResult>> login({
     required LoginParams params,
   });
 }
@@ -22,17 +22,23 @@ class AuthRepositoryImpl implements AuthRepository {
   final ConnectionStatus _connectionStatus;
 
   @override
-  Future<Either<Failure, LoginResult>> login({
+  Future<Either<LoginFailure, LoginResult>> login({
     required LoginParams params,
   }) async {
     final bool isConnected = await _connectionStatus.isConnected;
-    if (!isConnected) return failure(Failure.notConnected());
+    if (!isConnected) return failure(LoginFailure.noConnection());
 
     try {
       final response = await _authDataSource.login(params);
+      final failureType = response.failureType;
+
+      if (failureType != null) {
+        return failure(LoginFailure(type: failureType));
+      }
+
       return success(response.toDomain());
     } catch (e) {
-      return failure(Failure.handle(e));
+      return failure(LoginFailure.unknown(error: e));
     }
   }
 }
